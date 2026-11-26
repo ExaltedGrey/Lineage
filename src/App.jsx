@@ -6,10 +6,13 @@ import LifespanTimeline from './components/LifespanTimeline';
 import LineageQuiz from './components/LineageQuiz';
 import ProfileDrawer from './components/ProfileDrawer';
 
-const STORAGE_KEY = 'promised_offspring_progress_v1';
+const STORAGE_KEY = 'promised_offspring_progress_v2';
 
 const DEFAULT_PROGRESS = {
+  xp: 0,
   completedEras: [],
+  completedMiniGames: [],
+  unsealedProphecies: [],
   quizStats: {
     totalAnswered: 0,
     totalCorrect: 0,
@@ -21,11 +24,14 @@ const DEFAULT_PROGRESS = {
 
 function loadProgress() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('promised_offspring_progress_v1');
     if (!raw) return DEFAULT_PROGRESS;
     const parsed = JSON.parse(raw);
     return {
+      xp: typeof parsed.xp === 'number' ? parsed.xp : 0,
       completedEras: Array.isArray(parsed.completedEras) ? parsed.completedEras : [],
+      completedMiniGames: Array.isArray(parsed.completedMiniGames) ? parsed.completedMiniGames : [],
+      unsealedProphecies: Array.isArray(parsed.unsealedProphecies) ? parsed.unsealedProphecies : [],
       quizStats: {
         ...DEFAULT_PROGRESS.quizStats,
         ...(parsed.quizStats || {}),
@@ -57,7 +63,30 @@ export default function App() {
       if (prev.completedEras.includes(eraId)) return prev;
       return {
         ...prev,
+        xp: prev.xp + 50,
         completedEras: [...prev.completedEras, eraId],
+      };
+    });
+  }, []);
+
+  const handleCompleteMiniGame = useCallback((eraId) => {
+    setProgress((prev) => {
+      if (prev.completedMiniGames.includes(eraId)) return prev;
+      return {
+        ...prev,
+        xp: prev.xp + (eraId === 'era-7' ? 75 : 50),
+        completedMiniGames: [...prev.completedMiniGames, eraId],
+      };
+    });
+  }, []);
+
+  const handleUnsealProphecy = useCallback((prophecyId) => {
+    setProgress((prev) => {
+      if (prev.unsealedProphecies.includes(prophecyId)) return prev;
+      return {
+        ...prev,
+        xp: prev.xp + 25,
+        unsealedProphecies: [...prev.unsealedProphecies, prophecyId],
       };
     });
   }, []);
@@ -77,6 +106,7 @@ export default function App() {
 
       return {
         ...prev,
+        xp: prev.xp + (isCorrect ? 20 : 0),
         quizStats: {
           totalAnswered,
           totalCorrect,
@@ -98,6 +128,7 @@ export default function App() {
       if (modeId === 'timeline') badges.add('timekeeper');
       return {
         ...prev,
+        xp: prev.xp + 40,
         quizStats: {
           ...prev.quizStats,
           badges: Array.from(badges),
@@ -127,6 +158,7 @@ export default function App() {
           if (mode !== 'explorer') setExplorerFocusMessianic(false);
           setActiveMode(mode);
         }}
+        xp={progress.xp}
         completedErasCount={progress.completedEras.length}
         earnedBadgesCount={progress.quizStats.badges.length}
       />
@@ -135,8 +167,14 @@ export default function App() {
         {activeMode === 'story' && (
           <StoryJourney
             completedEras={progress.completedEras}
+            completedMiniGames={progress.completedMiniGames}
+            unsealedProphecies={progress.unsealedProphecies}
+            xp={progress.xp}
             onCompleteEra={handleCompleteEra}
+            onCompleteMiniGame={handleCompleteMiniGame}
+            onUnsealProphecy={handleUnsealProphecy}
             onSelectNode={setSelectedNode}
+            onLocateInExplorer={handleLocateInExplorer}
             onOpenExplorerFocus={handleOpenExplorerFocus}
           />
         )}
