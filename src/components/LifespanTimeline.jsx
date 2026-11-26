@@ -80,11 +80,15 @@ export default function LifespanTimeline({ onSelectNode }) {
 
   const alivePeople = useMemo(() => {
     return ALL_LIFESPANS.filter((p) => isAliveInYear(p.birthYear, p.deathYear, currentYear)).map(
-      (p) => ({
-        ...p,
-        age: ageInYear(p.birthYear, currentYear),
-        node: NODES_BY_ID[p.nodeId],
-      })
+      (p) => {
+        const rawAge = ageInYear(p.birthYear, currentYear);
+        const displayAge = p.name === 'Jesus' && currentYear === 33 ? '33½' : rawAge;
+        return {
+          ...p,
+          age: displayAge,
+          node: NODES_BY_ID[p.nodeId],
+        };
+      }
     );
   }, [currentYear]);
 
@@ -276,7 +280,8 @@ export default function LifespanTimeline({ onSelectNode }) {
                 const endPct = ((yearToSerial(p.deathYear) - MIN_SERIAL) / totalSpan) * 100;
                 const widthPct = Math.max(0.9, endPct - startPct);
                 const alive = isAliveInYear(p.birthYear, p.deathYear, currentYear);
-                const age = alive ? ageInYear(p.birthYear, currentYear) : null;
+                const rawAge = alive ? ageInYear(p.birthYear, currentYear) : null;
+                const age = alive && p.name === 'Jesus' && currentYear === 33 ? '33½' : rawAge;
                 const node = NODES_BY_ID[p.nodeId];
 
                 return (

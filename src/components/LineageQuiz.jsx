@@ -18,6 +18,9 @@ import {
   MATTHEW1_CHAIN_IDS,
   LUKE3_CHAIN_IDS,
 } from '../utils/dataStore';
+import { playCorrectSound, playWrongSound, playFanfareSound } from '../utils/soundEffects';
+import { ConfettiBurst } from './QuestIllustrations';
+import FamilyWorshipBar from './FamilyWorshipBar';
 
 const QUIZ_MODES = [
   {
@@ -248,7 +251,14 @@ function buildTimelineQuestions() {
     });
 }
 
-export default function LineageQuiz({ quizStats, onRecordAnswer, onRoundComplete, onSelectNode }) {
+export default function LineageQuiz({
+  quizStats,
+  soundEnabled = true,
+  familyProps,
+  onRecordAnswer,
+  onRoundComplete,
+  onSelectNode,
+}) {
   const [activeMode, setActiveMode] = useState('chain');
   const [roundSeed, setRoundSeed] = useState(1);
   const [qIndex, setQIndex] = useState(0);
@@ -282,6 +292,8 @@ export default function LineageQuiz({ quizStats, onRecordAnswer, onRoundComplete
     if (selectedOpt !== null) return;
     setSelectedOpt(opt);
     const isCorrect = opt === currentQ.correctAnswer;
+    if (isCorrect) playCorrectSound(soundEnabled);
+    else playWrongSound(soundEnabled);
     const nextRoundCorrect = roundCorrect + (isCorrect ? 1 : 0);
     setRoundCorrect(nextRoundCorrect);
     onRecordAnswer(isCorrect);
@@ -290,6 +302,7 @@ export default function LineageQuiz({ quizStats, onRecordAnswer, onRoundComplete
   const handleNext = () => {
     if (qIndex + 1 >= questions.length) {
       setRoundFinished(true);
+      playFanfareSound(soundEnabled);
       onRoundComplete(activeMode, roundCorrect, questions.length);
     } else {
       setQIndex((i) => i + 1);
@@ -299,13 +312,19 @@ export default function LineageQuiz({ quizStats, onRecordAnswer, onRoundComplete
 
   return (
     <div>
+      {familyProps && (
+        <div style={{ marginBottom: '1.15rem' }}>
+          <FamilyWorshipBar {...familyProps} />
+        </div>
+      )}
+
       <div className="section-header">
         <div>
-          <p className="section-kicker">Interactive Knowledge Game · Three Playable Modes</p>
+          <p className="section-kicker">Interactive Family Game · Three Playable Modes</p>
           <h1 className="section-title">Lineage Challenge Quiz</h1>
           <p className="section-lead">
             Test your mastery of the Messianic genealogy, the 13 prophetic covenants, and the
-            remarkable B.C.E. overlaps—earning archival badges saved right in your browser.
+            remarkable B.C.E. overlaps—solo or taking turns during Family Worship!
           </p>
         </div>
       </div>
@@ -341,7 +360,8 @@ export default function LineageQuiz({ quizStats, onRecordAnswer, onRoundComplete
 
       <div className="quiz-arena">
         {/* Main Question Stage */}
-        <section className="quiz-question-card">
+        <section className="quiz-question-card" style={{ position: 'relative', overflow: 'hidden' }}>
+          <ConfettiBurst active={roundFinished} />
           {roundFinished ? (
             <div style={{ textAlign: 'center', padding: '1rem 0' }}>
               <div

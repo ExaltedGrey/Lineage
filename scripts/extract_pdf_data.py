@@ -237,7 +237,7 @@ CURATED_PROFILES = {
         "scriptures": ["Genesis 16:15", "Genesis 17:20", "Genesis 25:12-18"]
     },
     "Isaac": {
-        "birthYear": -1917, "deathYear": -1738, "lifespan": 180, "era": "patriarchs",
+        "birthYear": -1918, "deathYear": -1738, "lifespan": 180, "era": "patriarchs",
         "role": "Child of Promise & Heir of the Covenant",
         "summary": "Miraculously born to Abraham and Sarah. Jehovah reaffirmed the Abrahamic oath directly to Isaac (Genesis 26:3). Weaned in 1913 B.C.E., marking the start of the 400 years of affliction.",
         "scriptures": ["Genesis 21:1-8", "Genesis 22:1-14", "Genesis 26:3-4", "Genesis 35:28-29"]
@@ -1163,7 +1163,7 @@ def extract_all(pdf_path: str, out_dir: Path):
         (671, "Abraham", -2018, -1843, 175, "patriarchs", "Born just 2 years after Noah's death; overlapped with Shem (150 yrs) and Jacob (15 yrs)!"),
         (51, "Sarah", -2008, -1881, 127, "patriarchs", "Only woman whose full age at death is recorded in Genesis; bore Isaac at age 90."),
         (find_idx("Ishmael", 900, 960), "Ishmael", -1932, -1795, 137, "patriarchs", "Abraham's firstborn son via Hagar; lived 137 years and fathered 12 chieftains."),
-        (668, "Isaac", -1917, -1738, 180, "patriarchs", "Lived 180 years; overlapped with Shem for 50 years and Joseph for 29 years!"),
+        (668, "Isaac", -1918, -1738, 180, "patriarchs", "Lived 180 years; overlapped with Shem for 50 years and Joseph for 29 years!"),
         (670, "Jacob/Israel", -1858, -1711, 147, "patriarchs", "Overlapped with Abraham for 15 years; moved Israel into Egypt at age 130 (1728 B.C.E.)."),
         (joseph_pat_idx, "Joseph", -1767, -1657, 110, "tribes", "Sold to Egypt at 17, became prime minister at 30, and saved Israel during famine."),
         (147, "Moses", -1593, -1473, 120, "tribes", "Led the 1513 B.C.E. Exodus at age 80 and guided Israel for 40 years to the Jordan."),
@@ -1275,7 +1275,7 @@ def extract_all(pdf_path: str, out_dir: Path):
             "subtitle": "An oath sworn to Abraham, Isaac, and Jacob",
             "narrative": [
                 "Born just two years after Noah died, Abraham left Ur of the Chaldeans and crossed the Euphrates in 1943 B.C.E., inaugurating the 430-year covenant period. Six major Messianic milestones unfold across the patriarchal era: the land covenant (Genesis 15:18), Abraham's new name (17:5), the oath that 'all nations' would be blessed through his offspring (22:18), and direct confirmations to Isaac (26:3) and Jacob (28:14; 32:28).",
-                "Though Sarah was barren until age 90, Isaac was miraculously born in 1917 B.C.E. Through Rebekah came Jacob — renamed Israel — whose four wives bore twelve sons who would grow into a great nation during their stay in Egypt."
+                "Though Sarah was barren until age 90, Isaac was miraculously born in 1918 B.C.E. Through Rebekah came Jacob — renamed Israel — whose four wives bore twelve sons who would grow into a great nation during their stay in Egypt."
             ],
             "prophecyIds": ["p2", "p3", "p4", "p5", "p6", "p7"],
             "steppingStoneNodeIds": [idx_to_id[i] for i in [671, 51, 668, 682, 670, 680]],

@@ -1,4 +1,4 @@
-import { Compass, Clock, Trophy, ScrollText, Map, Flame } from 'lucide-react';
+import { Compass, Clock, Trophy, ScrollText, Map, Flame, Volume2, VolumeX } from 'lucide-react';
 import { DATA_META } from '../utils/dataStore';
 
 const MODES = [
@@ -8,7 +8,15 @@ const MODES = [
   { id: 'quiz', label: 'Lineage Challenge', shortLabel: 'Quiz', icon: Trophy },
 ];
 
-export default function Header({ activeMode, onModeChange, xp, completedErasCount, earnedBadgesCount }) {
+export default function Header({
+  activeMode,
+  onModeChange,
+  xp,
+  completedErasCount,
+  earnedBadgesCount,
+  soundEnabled,
+  onToggleSound,
+}) {
   return (
     <header className="masthead">
       <div className="masthead-inner">
@@ -27,7 +35,7 @@ export default function Header({ activeMode, onModeChange, xp, completedErasCoun
                 The Promised Offspring
               </span>
               <span className="brand-subtitle" style={{ display: 'block' }}>
-                Interactive Biblical Lineage Tour · {DATA_META.totalNodes} Nodes
+                Interactive Bible Adventure · {DATA_META.totalNodes} Nodes
               </span>
             </span>
           </button>
@@ -35,12 +43,17 @@ export default function Header({ activeMode, onModeChange, xp, completedErasCoun
           <div className="masthead-stats-mobile">
             <span className="stat-chip stat-chip-compact" title="Explorer XP">
               <Flame size={12} />
-              <span>{xp} XP</span>
+              <span>{xp}</span>
             </span>
-            <span className="stat-chip stat-chip-compact" title="Completed Quest Eras">
-              <Trophy size={12} />
-              <span>{completedErasCount}/7</span>
-            </span>
+            <button
+              type="button"
+              className="sound-toggle-btn"
+              onClick={onToggleSound}
+              aria-label={soundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
+              title={soundEnabled ? 'Sound On' : 'Sound Off'}
+            >
+              {soundEnabled ? <Volume2 size={14} /> : <VolumeX size={14} />}
+            </button>
           </div>
         </div>
 
@@ -74,6 +87,15 @@ export default function Header({ activeMode, onModeChange, xp, completedErasCoun
             <Trophy size={13} />
             <span>{earnedBadgesCount} Badges</span>
           </span>
+          <button
+            type="button"
+            className="sound-toggle-btn"
+            onClick={onToggleSound}
+            aria-label={soundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
+            title={soundEnabled ? 'Sound Effects On' : 'Sound Effects Off'}
+          >
+            {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
+          </button>
         </div>
       </div>
     </header>
