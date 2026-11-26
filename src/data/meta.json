@@ -1,0 +1,14 @@
+{
+  "pageWidth": 1728.0,
+  "pageHeight": 2592.0,
+  "totalNodes": 746,
+  "totalEdges": 203,
+  "totalProphecies": 13,
+  "totalLifespans": 27,
+  "totalChronology": 19,
+  "totalStories": 7,
+  "messianicCount": 111,
+  "bannerCount": 39,
+  "zeroFallbackUrls": true,
+  "zeroUnnamedNodes": true
+}

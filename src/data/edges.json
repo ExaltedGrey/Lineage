@@ -1,0 +1,1017 @@
+[
+  {
+    "from": "n619",
+    "to": "n657",
+    "type": "messianic"
+  },
+  {
+    "from": "n657",
+    "to": "n658",
+    "type": "messianic"
+  },
+  {
+    "from": "n658",
+    "to": "n659",
+    "type": "messianic"
+  },
+  {
+    "from": "n659",
+    "to": "n674",
+    "type": "messianic"
+  },
+  {
+    "from": "n674",
+    "to": "n677",
+    "type": "messianic"
+  },
+  {
+    "from": "n677",
+    "to": "n678",
+    "type": "messianic"
+  },
+  {
+    "from": "n678",
+    "to": "n675",
+    "type": "messianic"
+  },
+  {
+    "from": "n675",
+    "to": "n660",
+    "type": "messianic"
+  },
+  {
+    "from": "n660",
+    "to": "n661",
+    "type": "messianic"
+  },
+  {
+    "from": "n661",
+    "to": "n662",
+    "type": "messianic"
+  },
+  {
+    "from": "n662",
+    "to": "n676",
+    "type": "messianic"
+  },
+  {
+    "from": "n676",
+    "to": "n663",
+    "type": "messianic"
+  },
+  {
+    "from": "n663",
+    "to": "n664",
+    "type": "messianic"
+  },
+  {
+    "from": "n664",
+    "to": "n673",
+    "type": "messianic"
+  },
+  {
+    "from": "n673",
+    "to": "n665",
+    "type": "messianic"
+  },
+  {
+    "from": "n665",
+    "to": "n672",
+    "type": "messianic"
+  },
+  {
+    "from": "n672",
+    "to": "n666",
+    "type": "messianic"
+  },
+  {
+    "from": "n666",
+    "to": "n667",
+    "type": "messianic"
+  },
+  {
+    "from": "n667",
+    "to": "n671",
+    "type": "messianic"
+  },
+  {
+    "from": "n671",
+    "to": "n668",
+    "type": "messianic"
+  },
+  {
+    "from": "n668",
+    "to": "n670",
+    "type": "messianic"
+  },
+  {
+    "from": "n670",
+    "to": "n736",
+    "type": "messianic"
+  },
+  {
+    "from": "n736",
+    "to": "n740",
+    "type": "messianic"
+  },
+  {
+    "from": "n740",
+    "to": "n741",
+    "type": "messianic"
+  },
+  {
+    "from": "n741",
+    "to": "n742",
+    "type": "messianic"
+  },
+  {
+    "from": "n742",
+    "to": "n748",
+    "type": "messianic"
+  },
+  {
+    "from": "n748",
+    "to": "n743",
+    "type": "messianic"
+  },
+  {
+    "from": "n743",
+    "to": "n744",
+    "type": "messianic"
+  },
+  {
+    "from": "n744",
+    "to": "n747",
+    "type": "messianic"
+  },
+  {
+    "from": "n747",
+    "to": "n745",
+    "type": "messianic"
+  },
+  {
+    "from": "n745",
+    "to": "n746",
+    "type": "messianic"
+  },
+  {
+    "from": "n746",
+    "to": "n669",
+    "type": "messianic"
+  },
+  {
+    "from": "n619",
+    "to": "n618",
+    "type": "marriage"
+  },
+  {
+    "from": "n671",
+    "to": "n51",
+    "type": "marriage"
+  },
+  {
+    "from": "n668",
+    "to": "n682",
+    "type": "marriage"
+  },
+  {
+    "from": "n670",
+    "to": "n680",
+    "type": "marriage"
+  },
+  {
+    "from": "n736",
+    "to": "n656",
+    "type": "marriage"
+  },
+  {
+    "from": "n744",
+    "to": "n436",
+    "type": "marriage"
+  },
+  {
+    "from": "n747",
+    "to": "n439",
+    "type": "marriage"
+  },
+  {
+    "from": "n669",
+    "to": "n681",
+    "type": "marriage"
+  },
+  {
+    "from": "n618",
+    "to": "n657",
+    "type": "maternal"
+  },
+  {
+    "from": "n51",
+    "to": "n668",
+    "type": "maternal"
+  },
+  {
+    "from": "n682",
+    "to": "n670",
+    "type": "maternal"
+  },
+  {
+    "from": "n680",
+    "to": "n736",
+    "type": "maternal"
+  },
+  {
+    "from": "n656",
+    "to": "n740",
+    "type": "maternal"
+  },
+  {
+    "from": "n436",
+    "to": "n747",
+    "type": "maternal"
+  },
+  {
+    "from": "n439",
+    "to": "n745",
+    "type": "maternal"
+  },
+  {
+    "from": "n681",
+    "to": "n739",
+    "type": "maternal"
+  },
+  {
+    "from": "n681",
+    "to": "n737",
+    "type": "maternal"
+  },
+  {
+    "from": "n669",
+    "to": "n739",
+    "type": "matthew1"
+  },
+  {
+    "from": "n739",
+    "to": "n370",
+    "type": "matthew1"
+  },
+  {
+    "from": "n370",
+    "to": "n371",
+    "type": "matthew1"
+  },
+  {
+    "from": "n371",
+    "to": "n372",
+    "type": "matthew1"
+  },
+  {
+    "from": "n372",
+    "to": "n373",
+    "type": "matthew1"
+  },
+  {
+    "from": "n373",
+    "to": "n374",
+    "type": "matthew1"
+  },
+  {
+    "from": "n374",
+    "to": "n375",
+    "type": "matthew1"
+  },
+  {
+    "from": "n375",
+    "to": "n376",
+    "type": "matthew1"
+  },
+  {
+    "from": "n376",
+    "to": "n377",
+    "type": "matthew1"
+  },
+  {
+    "from": "n377",
+    "to": "n378",
+    "type": "matthew1"
+  },
+  {
+    "from": "n378",
+    "to": "n379",
+    "type": "matthew1"
+  },
+  {
+    "from": "n379",
+    "to": "n380",
+    "type": "matthew1"
+  },
+  {
+    "from": "n380",
+    "to": "n381",
+    "type": "matthew1"
+  },
+  {
+    "from": "n381",
+    "to": "n382",
+    "type": "matthew1"
+  },
+  {
+    "from": "n382",
+    "to": "n383",
+    "type": "matthew1"
+  },
+  {
+    "from": "n383",
+    "to": "n389",
+    "type": "matthew1"
+  },
+  {
+    "from": "n389",
+    "to": "n390",
+    "type": "matthew1"
+  },
+  {
+    "from": "n390",
+    "to": "n393",
+    "type": "matthew1"
+  },
+  {
+    "from": "n393",
+    "to": "n395",
+    "type": "matthew1"
+  },
+  {
+    "from": "n395",
+    "to": "n738",
+    "type": "matthew1"
+  },
+  {
+    "from": "n738",
+    "to": "n316",
+    "type": "matthew1"
+  },
+  {
+    "from": "n316",
+    "to": "n359",
+    "type": "matthew1"
+  },
+  {
+    "from": "n359",
+    "to": "n367",
+    "type": "matthew1"
+  },
+  {
+    "from": "n367",
+    "to": "n369",
+    "type": "matthew1"
+  },
+  {
+    "from": "n369",
+    "to": "n368",
+    "type": "matthew1"
+  },
+  {
+    "from": "n368",
+    "to": "n365",
+    "type": "matthew1"
+  },
+  {
+    "from": "n365",
+    "to": "n366",
+    "type": "matthew1"
+  },
+  {
+    "from": "n366",
+    "to": "n364",
+    "type": "matthew1"
+  },
+  {
+    "from": "n364",
+    "to": "n360",
+    "type": "matthew1"
+  },
+  {
+    "from": "n360",
+    "to": "n445",
+    "type": "matthew1"
+  },
+  {
+    "from": "n445",
+    "to": "n684",
+    "type": "matthew1"
+  },
+  {
+    "from": "n669",
+    "to": "n737",
+    "type": "luke3"
+  },
+  {
+    "from": "n737",
+    "to": "n297",
+    "type": "luke3"
+  },
+  {
+    "from": "n297",
+    "to": "n298",
+    "type": "luke3"
+  },
+  {
+    "from": "n298",
+    "to": "n299",
+    "type": "luke3"
+  },
+  {
+    "from": "n299",
+    "to": "n300",
+    "type": "luke3"
+  },
+  {
+    "from": "n300",
+    "to": "n301",
+    "type": "luke3"
+  },
+  {
+    "from": "n301",
+    "to": "n302",
+    "type": "luke3"
+  },
+  {
+    "from": "n302",
+    "to": "n303",
+    "type": "luke3"
+  },
+  {
+    "from": "n303",
+    "to": "n304",
+    "type": "luke3"
+  },
+  {
+    "from": "n304",
+    "to": "n305",
+    "type": "luke3"
+  },
+  {
+    "from": "n305",
+    "to": "n306",
+    "type": "luke3"
+  },
+  {
+    "from": "n306",
+    "to": "n307",
+    "type": "luke3"
+  },
+  {
+    "from": "n307",
+    "to": "n308",
+    "type": "luke3"
+  },
+  {
+    "from": "n308",
+    "to": "n309",
+    "type": "luke3"
+  },
+  {
+    "from": "n309",
+    "to": "n310",
+    "type": "luke3"
+  },
+  {
+    "from": "n310",
+    "to": "n311",
+    "type": "luke3"
+  },
+  {
+    "from": "n311",
+    "to": "n312",
+    "type": "luke3"
+  },
+  {
+    "from": "n312",
+    "to": "n313",
+    "type": "luke3"
+  },
+  {
+    "from": "n313",
+    "to": "n314",
+    "type": "luke3"
+  },
+  {
+    "from": "n314",
+    "to": "n315",
+    "type": "luke3"
+  },
+  {
+    "from": "n315",
+    "to": "n395",
+    "type": "luke3"
+  },
+  {
+    "from": "n395",
+    "to": "n738",
+    "type": "luke3"
+  },
+  {
+    "from": "n738",
+    "to": "n318",
+    "type": "luke3"
+  },
+  {
+    "from": "n318",
+    "to": "n319",
+    "type": "luke3"
+  },
+  {
+    "from": "n319",
+    "to": "n320",
+    "type": "luke3"
+  },
+  {
+    "from": "n320",
+    "to": "n321",
+    "type": "luke3"
+  },
+  {
+    "from": "n321",
+    "to": "n322",
+    "type": "luke3"
+  },
+  {
+    "from": "n322",
+    "to": "n327",
+    "type": "luke3"
+  },
+  {
+    "from": "n327",
+    "to": "n326",
+    "type": "luke3"
+  },
+  {
+    "from": "n326",
+    "to": "n325",
+    "type": "luke3"
+  },
+  {
+    "from": "n325",
+    "to": "n324",
+    "type": "luke3"
+  },
+  {
+    "from": "n324",
+    "to": "n323",
+    "type": "luke3"
+  },
+  {
+    "from": "n323",
+    "to": "n328",
+    "type": "luke3"
+  },
+  {
+    "from": "n328",
+    "to": "n329",
+    "type": "luke3"
+  },
+  {
+    "from": "n329",
+    "to": "n330",
+    "type": "luke3"
+  },
+  {
+    "from": "n330",
+    "to": "n331",
+    "type": "luke3"
+  },
+  {
+    "from": "n331",
+    "to": "n332",
+    "type": "luke3"
+  },
+  {
+    "from": "n332",
+    "to": "n358",
+    "type": "luke3"
+  },
+  {
+    "from": "n358",
+    "to": "n357",
+    "type": "luke3"
+  },
+  {
+    "from": "n357",
+    "to": "n333",
+    "type": "luke3"
+  },
+  {
+    "from": "n333",
+    "to": "n444",
+    "type": "luke3"
+  },
+  {
+    "from": "n444",
+    "to": "n684",
+    "type": "luke3"
+  },
+  {
+    "from": "n444",
+    "to": "n445",
+    "type": "marriage"
+  },
+  {
+    "from": "n619",
+    "to": "n607",
+    "type": "paternal"
+  },
+  {
+    "from": "n618",
+    "to": "n607",
+    "type": "maternal"
+  },
+  {
+    "from": "n619",
+    "to": "n604",
+    "type": "paternal"
+  },
+  {
+    "from": "n618",
+    "to": "n604",
+    "type": "maternal"
+  },
+  {
+    "from": "n661",
+    "to": "n606",
+    "type": "paternal"
+  },
+  {
+    "from": "n661",
+    "to": "n605",
+    "type": "paternal"
+  },
+  {
+    "from": "n606",
+    "to": "n28",
+    "type": "paternal"
+  },
+  {
+    "from": "n28",
+    "to": "n698",
+    "type": "nation"
+  },
+  {
+    "from": "n606",
+    "to": "n20",
+    "type": "paternal"
+  },
+  {
+    "from": "n20",
+    "to": "n699",
+    "type": "nation"
+  },
+  {
+    "from": "n606",
+    "to": "n48",
+    "type": "paternal"
+  },
+  {
+    "from": "n48",
+    "to": "n701",
+    "type": "nation"
+  },
+  {
+    "from": "n606",
+    "to": "n46",
+    "type": "paternal"
+  },
+  {
+    "from": "n46",
+    "to": "n702",
+    "type": "nation"
+  },
+  {
+    "from": "n662",
+    "to": "n134",
+    "type": "paternal"
+  },
+  {
+    "from": "n134",
+    "to": "n697",
+    "type": "nation"
+  },
+  {
+    "from": "n662",
+    "to": "n135",
+    "type": "paternal"
+  },
+  {
+    "from": "n135",
+    "to": "n704",
+    "type": "nation"
+  },
+  {
+    "from": "n662",
+    "to": "n136",
+    "type": "paternal"
+  },
+  {
+    "from": "n136",
+    "to": "n705",
+    "type": "nation"
+  },
+  {
+    "from": "n662",
+    "to": "n137",
+    "type": "paternal"
+  },
+  {
+    "from": "n137",
+    "to": "n706",
+    "type": "nation"
+  },
+  {
+    "from": "n664",
+    "to": "n720",
+    "type": "nation"
+  },
+  {
+    "from": "n664",
+    "to": "n12",
+    "type": "paternal"
+  },
+  {
+    "from": "n12",
+    "to": "n713",
+    "type": "nation"
+  },
+  {
+    "from": "n605",
+    "to": "n18",
+    "type": "paternal"
+  },
+  {
+    "from": "n18",
+    "to": "n708",
+    "type": "nation"
+  },
+  {
+    "from": "n605",
+    "to": "n17",
+    "type": "paternal"
+  },
+  {
+    "from": "n17",
+    "to": "n709",
+    "type": "nation"
+  },
+  {
+    "from": "n605",
+    "to": "n4",
+    "type": "paternal"
+  },
+  {
+    "from": "n4",
+    "to": "n710",
+    "type": "nation"
+  },
+  {
+    "from": "n605",
+    "to": "n16",
+    "type": "paternal"
+  },
+  {
+    "from": "n16",
+    "to": "n717",
+    "type": "nation"
+  },
+  {
+    "from": "n605",
+    "to": "n15",
+    "type": "paternal"
+  },
+  {
+    "from": "n15",
+    "to": "n718",
+    "type": "nation"
+  },
+  {
+    "from": "n605",
+    "to": "n14",
+    "type": "paternal"
+  },
+  {
+    "from": "n14",
+    "to": "n719",
+    "type": "nation"
+  },
+  {
+    "from": "n671",
+    "to": "n139",
+    "type": "paternal"
+  },
+  {
+    "from": "n139",
+    "to": "n712",
+    "type": "nation"
+  },
+  {
+    "from": "n668",
+    "to": "n141",
+    "type": "paternal"
+  },
+  {
+    "from": "n141",
+    "to": "n716",
+    "type": "nation"
+  },
+  {
+    "from": "n670",
+    "to": "n52",
+    "type": "marriage"
+  },
+  {
+    "from": "n670",
+    "to": "n53",
+    "type": "marriage"
+  },
+  {
+    "from": "n670",
+    "to": "n54",
+    "type": "marriage"
+  },
+  {
+    "from": "n670",
+    "to": "n693",
+    "type": "tribe"
+  },
+  {
+    "from": "n680",
+    "to": "n693",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n694",
+    "type": "tribe"
+  },
+  {
+    "from": "n680",
+    "to": "n694",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n683",
+    "type": "tribe"
+  },
+  {
+    "from": "n680",
+    "to": "n683",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n691",
+    "type": "tribe"
+  },
+  {
+    "from": "n680",
+    "to": "n691",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n692",
+    "type": "tribe"
+  },
+  {
+    "from": "n680",
+    "to": "n692",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n688",
+    "type": "tribe"
+  },
+  {
+    "from": "n53",
+    "to": "n688",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n687",
+    "type": "tribe"
+  },
+  {
+    "from": "n53",
+    "to": "n687",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n686",
+    "type": "tribe"
+  },
+  {
+    "from": "n54",
+    "to": "n686",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n685",
+    "type": "tribe"
+  },
+  {
+    "from": "n54",
+    "to": "n685",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n695",
+    "type": "tribe"
+  },
+  {
+    "from": "n52",
+    "to": "n695",
+    "type": "maternal"
+  },
+  {
+    "from": "n670",
+    "to": "n50",
+    "type": "tribe"
+  },
+  {
+    "from": "n52",
+    "to": "n50",
+    "type": "maternal"
+  },
+  {
+    "from": "n50",
+    "to": "n689",
+    "type": "tribe"
+  },
+  {
+    "from": "n50",
+    "to": "n690",
+    "type": "tribe"
+  },
+  {
+    "from": "n683",
+    "to": "n147",
+    "type": "tribe"
+  },
+  {
+    "from": "n683",
+    "to": "n148",
+    "type": "tribe"
+  },
+  {
+    "from": "n683",
+    "to": "n250",
+    "type": "tribe"
+  },
+  {
+    "from": "n683",
+    "to": "n146",
+    "type": "tribe"
+  },
+  {
+    "from": "n690",
+    "to": "n721",
+    "type": "tribe"
+  },
+  {
+    "from": "n695",
+    "to": "n567",
+    "type": "tribe"
+  },
+  {
+    "from": "n567",
+    "to": "n569",
+    "type": "paternal"
+  },
+  {
+    "from": "n695",
+    "to": "n568",
+    "type": "tribe"
+  },
+  {
+    "from": "n695",
+    "to": "n260",
+    "type": "tribe"
+  },
+  {
+    "from": "n218",
+    "to": "n200",
+    "type": "marriage"
+  },
+  {
+    "from": "n218",
+    "to": "n149",
+    "type": "paternal"
+  },
+  {
+    "from": "n200",
+    "to": "n149",
+    "type": "maternal"
+  }
+]

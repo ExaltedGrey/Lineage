@@ -1,0 +1,216 @@
+[
+  {
+    "id": "p1",
+    "order": 1,
+    "nodeId": "n622",
+    "reference": "Genesis 3:15",
+    "title": "The Promise of Eden",
+    "date": "4026 B.C.E.",
+    "era": "eden",
+    "summary": "Jehovah's foundational Messianic prophecy spoken in Eden: the woman's offspring will permanently crush the serpent's head after suffering a temporary wound in the heel.",
+    "fulfillment": "Fulfilled in Jesus Christ, who was struck in the heel through his death in 33 C.E. and resurrected to crush Satan.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=01003015&pub=nwtsty",
+    "linkedNodeIds": [
+      "n619",
+      "n618",
+      "n684"
+    ]
+  },
+  {
+    "id": "p2",
+    "order": 2,
+    "nodeId": "n623",
+    "reference": "Genesis 15:18",
+    "title": "Covenant with Abram",
+    "date": "1943 B.C.E.",
+    "era": "patriarchs",
+    "summary": "Jehovah formalized his covenant with Abram, promising his offspring the land from the river of Egypt to the Euphrates.",
+    "fulfillment": "Established the legal territorial and spiritual inheritance for Abraham's descendants.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=01015018&pub=nwtsty",
+    "linkedNodeIds": [
+      "n671"
+    ]
+  },
+  {
+    "id": "p3",
+    "order": 3,
+    "nodeId": "n624",
+    "reference": "Genesis 17:5",
+    "title": "Abraham Given a New Name",
+    "date": "1919 B.C.E.",
+    "era": "patriarchs",
+    "summary": "God renamed Abram ('Father Is High') to Abraham ('Father of a Crowd / Multitude'), declaring he would become the father of many nations.",
+    "fulfillment": "Broadened the scope of God's promise beyond one household to encompass faithful people of all nations.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=01017005&pub=nwtsty",
+    "linkedNodeIds": [
+      "n671",
+      "n51"
+    ]
+  },
+  {
+    "id": "p4",
+    "order": 4,
+    "nodeId": "n625",
+    "reference": "Genesis 22:18",
+    "title": "All Nations to Be Blessed",
+    "date": "c. 1893 B.C.E.",
+    "era": "patriarchs",
+    "summary": "After Abraham's extraordinary faith in offering Isaac, Jehovah swore by himself that through Abraham's offspring all nations of the earth would obtain a blessing.",
+    "fulfillment": "Paul confirms at Galatians 3:16 that this promised 'offspring' is primarily Christ.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=01022018&pub=nwtsty",
+    "linkedNodeIds": [
+      "n671",
+      "n668",
+      "n684"
+    ]
+  },
+  {
+    "id": "p5",
+    "order": 5,
+    "nodeId": "n626",
+    "reference": "Genesis 26:3",
+    "title": "Promise to Isaac",
+    "date": "c. 1843 B.C.E.",
+    "era": "patriarchs",
+    "summary": "Jehovah confirmed the Abrahamic oath specifically through Isaac rather than Ishmael, narrowing the Messianic channel.",
+    "fulfillment": "Verified that the covenant promise followed the miraculous line of Sarah's son Isaac.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=01026003&pub=nwtsty",
+    "linkedNodeIds": [
+      "n668",
+      "n682"
+    ]
+  },
+  {
+    "id": "p6",
+    "order": 6,
+    "nodeId": "n627",
+    "reference": "Genesis 28:14",
+    "title": "Promise to Jacob",
+    "date": "1781 B.C.E.",
+    "era": "patriarchs",
+    "summary": "In a dream at Bethel featuring angels ascending and descending to heaven, Jehovah confirmed to Jacob that all families of the ground would be blessed through his offspring.",
+    "fulfillment": "Confirmed Jacob (not Esau) as the chosen third patriarch of the Messianic promise.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=01028014&pub=nwtsty",
+    "linkedNodeIds": [
+      "n670",
+      "n680"
+    ]
+  },
+  {
+    "id": "p7",
+    "order": 7,
+    "nodeId": "n628",
+    "reference": "Genesis 32:28",
+    "title": "Jacob Renamed to Israel",
+    "date": "1761 B.C.E.",
+    "era": "patriarchs",
+    "summary": "After persevering all night wrestling an angel at the Jabbok, Jacob was renamed Israel ('Contender With God'), naming the covenant nation.",
+    "fulfillment": "Established the twelve tribes of Israel through which God's purpose would unfold.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=01032028&pub=nwtsty",
+    "linkedNodeIds": [
+      "n670",
+      "n736"
+    ]
+  },
+  {
+    "id": "p8",
+    "order": 8,
+    "nodeId": "n629",
+    "reference": "Genesis 49:10",
+    "title": "The Tribe of Judah",
+    "date": "1711 B.C.E.",
+    "era": "tribes",
+    "summary": "On his deathbed in Egypt, Jacob prophesied that the royal scepter would belong to Judah until 'Shiloh' ('He Whose It Is') arrives.",
+    "fulfillment": "Narrowed the Messianic search from twelve tribes down to the single royal tribe of Judah.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=01049010&pub=nwtsty",
+    "linkedNodeIds": [
+      "n670",
+      "n736",
+      "n684"
+    ]
+  },
+  {
+    "id": "p9",
+    "order": 9,
+    "nodeId": "n630",
+    "reference": "2 Samuel 7:12",
+    "title": "The House of David",
+    "date": "c. 1070 B.C.E.",
+    "era": "david",
+    "summary": "Through the prophet Nathan, Jehovah promised King David an everlasting dynasty: his royal house and throne would stand firm forever.",
+    "fulfillment": "Narrowed the Messiah's identity within Judah to a direct descendant of King David.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=10007012&pub=nwtsty",
+    "linkedNodeIds": [
+      "n669",
+      "n739",
+      "n737",
+      "n684"
+    ]
+  },
+  {
+    "id": "p10",
+    "order": 10,
+    "nodeId": "n631",
+    "reference": "Psalm 110:4",
+    "title": "To the Manner of Melchizedek",
+    "date": "c. 1070 B.C.E.",
+    "era": "david",
+    "summary": "Jehovah swore that David's Lord would serve not only as King from Judah, but also as an eternal Priest 'in the manner of Melchizedek.'",
+    "fulfillment": "Explains how Jesus from Judah holds a superior, permanent royal priesthood surpassing the Aaronic line.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=19110004&pub=nwtsty",
+    "linkedNodeIds": [
+      "n669",
+      "n684"
+    ]
+  },
+  {
+    "id": "p11",
+    "order": 11,
+    "nodeId": "n632",
+    "reference": "Isaiah 11:10",
+    "title": "Out of the Stump of Jesse",
+    "date": "c. 732 B.C.E.",
+    "era": "david",
+    "summary": "Even after the royal Davidic tree would be cut down in Babylonian exile, 'the root of Jesse' would stand as a signal for the peoples and nations.",
+    "fulfillment": "Foretold the Messiah's emergence from David's humble ancestral line in Bethlehem after centuries without a reigning king.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=23011010&pub=nwtsty",
+    "linkedNodeIds": [
+      "n746",
+      "n669",
+      "n684"
+    ]
+  },
+  {
+    "id": "p12",
+    "order": 12,
+    "nodeId": "n633",
+    "reference": "Daniel 9:24",
+    "title": "Messiah to Arrive in 69 'Weeks'",
+    "date": "539 B.C.E.",
+    "era": "exile",
+    "summary": "Angel Gabriel revealed the 70-weeks prophecy: 69 prophetic weeks (483 years) from the word to rebuild Jerusalem (455 B.C.E.) would pinpoint the exact year Messiah the Leader would appear — 29 C.E.!",
+    "fulfillment": "Pinpointed Jesus' baptism and anointing in the fall of 29 C.E. to the exact year.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=27009024&pub=nwtsty",
+    "linkedNodeIds": [
+      "n738",
+      "n684"
+    ]
+  },
+  {
+    "id": "p13",
+    "order": 13,
+    "nodeId": "n634",
+    "reference": "Luke 1:32",
+    "title": "Jesus to Inherit Throne of David",
+    "date": "2 B.C.E.",
+    "era": "offspring",
+    "summary": "Angel Gabriel declared to Mary in Nazareth: 'Jehovah God will give him the throne of David his father, and he will rule as King over the house of Jacob forever.'",
+    "fulfillment": "Directly united the Genesis 3:15, Judah, and Davidic promises in Jesus of Nazareth.",
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=42001032&pub=nwtsty",
+    "linkedNodeIds": [
+      "n444",
+      "n445",
+      "n684"
+    ]
+  }
+]

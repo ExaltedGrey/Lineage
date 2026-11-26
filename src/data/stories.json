@@ -1,0 +1,252 @@
+[
+  {
+    "id": "era-1",
+    "chapter": 1,
+    "eraKey": "eden",
+    "title": "Eden & The First Promise",
+    "years": "4026 – 2370 B.C.E.",
+    "subtitle": "Ten pre-Flood generations guard the first Messianic hope",
+    "narrative": [
+      "Human history begins in 4026 B.C.E. with Adam and Eve in the Garden of Eden. Immediately after rebellion fractured humanity's peace, Jehovah uttered the Bible's foundational prophecy at Genesis 3:15: an 'offspring' of the woman would one day crush the serpent's head.",
+      "Rather than ending humanity's story, God preserved a faithful line through Seth — appointed in place of righteous Abel. Remarkably, because pre-Flood lifespans stretched nearly a millennium, firsthand accounts of Eden traveled rapidly across generations: Methuselah overlapped with Adam for 243 years and lived right up to the year of the Global Flood!"
+    ],
+    "prophecyIds": [
+      "p1"
+    ],
+    "steppingStoneNodeIds": [
+      "n619",
+      "n618",
+      "n657",
+      "n678",
+      "n675",
+      "n660"
+    ],
+    "checkIn": {
+      "question": "How many years did Methuselah — the longest-lived human in Scripture — overlap with Adam?",
+      "options": [
+        "56 years",
+        "243 years",
+        "427 years",
+        "930 years"
+      ],
+      "correctIndex": 1,
+      "explanation": "Adam died in 3096 B.C.E. and Methuselah was born in 3339 B.C.E., giving them an extraordinary 243-year overlap to pass down Eden's history directly!"
+    }
+  },
+  {
+    "id": "era-2",
+    "chapter": 2,
+    "eraKey": "flood",
+    "title": "Flood & Origin of Nations",
+    "years": "2370 – 1943 B.C.E.",
+    "subtitle": "From Noah's Ark and Babel's dispersion to the birth of the Hebrews",
+    "narrative": [
+      "In 2370 B.C.E. — exactly 1,656 years after Adam's creation — the Global Flood swept away a violent world, sparing righteous Noah, his wife, and his three sons: Shem, Ham, and Japheth. From those three branches arose the entire Table of Nations mapped across the upper poster: Cushites, Egyptians, Canaanites, Elamites, Assyrians, Medes, Greeks, and more.",
+      "Noah blessed Shem's God, Jehovah, marking Shem's line as the channel of the promise. Through Arpachshad, Shelah, and Eber (ancestor of the Hebrews), humanity reached the days of Peleg when Jehovah confused languages at the Tower of Babel. Amazingly, Shem lived 502 years after the Flood — long enough to overlap with Abraham for 150 years!"
+    ],
+    "prophecyIds": [
+      "p1"
+    ],
+    "steppingStoneNodeIds": [
+      "n661",
+      "n662",
+      "n676",
+      "n664",
+      "n673",
+      "n667"
+    ],
+    "checkIn": {
+      "question": "Which post-Flood patriarch's name means 'Division' because the languages at Babel were confused during his lifetime?",
+      "options": [
+        "Arpachshad",
+        "Eber",
+        "Peleg",
+        "Serug"
+      ],
+      "correctIndex": 2,
+      "explanation": "Genesis 10:25 records that Peleg ('Division') was named because 'in his lifetime the earth was divided' at the dispersion from Babel."
+    }
+  },
+  {
+    "id": "era-3",
+    "chapter": 3,
+    "eraKey": "patriarchs",
+    "title": "Patriarchs & Covenant",
+    "years": "2018 – 1711 B.C.E.",
+    "subtitle": "An oath sworn to Abraham, Isaac, and Jacob",
+    "narrative": [
+      "Born just two years after Noah died, Abraham left Ur of the Chaldeans and crossed the Euphrates in 1943 B.C.E., inaugurating the 430-year covenant period. Six major Messianic milestones unfold across the patriarchal era: the land covenant (Genesis 15:18), Abraham's new name (17:5), the oath that 'all nations' would be blessed through his offspring (22:18), and direct confirmations to Isaac (26:3) and Jacob (28:14; 32:28).",
+      "Though Sarah was barren until age 90, Isaac was miraculously born in 1917 B.C.E. Through Rebekah came Jacob — renamed Israel — whose four wives bore twelve sons who would grow into a great nation during their stay in Egypt."
+    ],
+    "prophecyIds": [
+      "p2",
+      "p3",
+      "p4",
+      "p5",
+      "p6",
+      "p7"
+    ],
+    "steppingStoneNodeIds": [
+      "n671",
+      "n51",
+      "n668",
+      "n682",
+      "n670",
+      "n680"
+    ],
+    "checkIn": {
+      "question": "What landmark event in 1943 B.C.E. initiated the 430-year period mentioned at Galatians 3:17?",
+      "options": [
+        "Jacob moving his household into Egypt",
+        "Abraham crossing the Euphrates into Canaan",
+        "Isaac being weaned at age five",
+        "Moses leading Israel across the Red Sea"
+      ],
+      "correctIndex": 1,
+      "explanation": "Abraham crossed the Euphrates into Canaan in 1943 B.C.E., when the Abrahamic covenant took effect — exactly 430 years before the 1513 B.C.E. Exodus and Law Covenant!"
+    }
+  },
+  {
+    "id": "era-4",
+    "chapter": 4,
+    "eraKey": "tribes",
+    "title": "Twelve Tribes, Exodus & Judges",
+    "years": "1728 – 1117 B.C.E.",
+    "subtitle": "The scepter promised to Judah through Egypt, Sinai, and Bethlehem",
+    "narrative": [
+      "On his deathbed in Egypt (1711 B.C.E.), Jacob narrowed the Messianic line to one of his twelve sons: 'The scepter will not depart from Judah... until Shiloh comes' (Genesis 49:10). Meanwhile, Levi's tribe produced Moses, Aaron, and the priesthood, leading Israel out of Egypt in 1513 B.C.E. and into the Promised Land in 1473 B.C.E.",
+      "During the turbulent 356 years of the Judges — featuring deliverers like Othniel, Ehud, Gideon, Samson, and Samuel — the quiet thread of Judah's line shone brightly through remarkable women of faith: Tamar, Rahab of Jericho, and loyal Ruth the Moabitess who married Boaz in Bethlehem."
+    ],
+    "prophecyIds": [
+      "p8"
+    ],
+    "steppingStoneNodeIds": [
+      "n736",
+      "n740",
+      "n743",
+      "n147",
+      "n436",
+      "n747",
+      "n439",
+      "n745"
+    ],
+    "checkIn": {
+      "question": "Which tribe received Jacob's Genesis 49:10 prophecy that the royal scepter would remain with it until Shiloh comes?",
+      "options": [
+        "Levi",
+        "Joseph (Ephraim)",
+        "Judah",
+        "Benjamin"
+      ],
+      "correctIndex": 2,
+      "explanation": "Judah — fourth son of Jacob and Leah — was promised the royal scepter until Shiloh ('He Whose It Is'), the Messiah, arrives."
+    }
+  },
+  {
+    "id": "era-5",
+    "chapter": 5,
+    "eraKey": "david",
+    "title": "House of David & Divided Kingdom",
+    "years": "1117 – 607 B.C.E.",
+    "subtitle": "An everlasting Kingdom covenant and two royal branches from Bath-sheba",
+    "narrative": [
+      "After Saul of Benjamin became Israel's first king in 1117 B.C.E., Jehovah chose Jesse's youngest son, David of Bethlehem. At 2 Samuel 7:12, God covenanted that David's throne would stand firm forever, and Psalm 110:4 revealed that David's royal heir would also be an eternal Priest like Melchizedek.",
+      "Here the lineage chart splits into two monumental branches — BOTH descending from David and Bath-sheba! The Legal Lineage (Matthew 1) tracks the reigning kings of Judah through Solomon (Rehoboam, Hezekiah, Josiah), while the Natural Lineage (Luke 3) descends quietly through Solomon's brother Nathan. Even as Assyria toppled northern Israel (740 B.C.E.) and Isaiah foretold a 'twig out of the stump of Jesse' (Isaiah 11:10), both lines survived intact."
+    ],
+    "prophecyIds": [
+      "p9",
+      "p10",
+      "p11"
+    ],
+    "steppingStoneNodeIds": [
+      "n746",
+      "n669",
+      "n681",
+      "n739",
+      "n737",
+      "n381",
+      "n389"
+    ],
+    "checkIn": {
+      "question": "Through which two sons of David and Bath-sheba do the Matthew 1 Legal Line and Luke 3 Natural Line branch?",
+      "options": [
+        "Absalom and Adonijah",
+        "Solomon (Matthew 1) and Nathan (Luke 3)",
+        "Rehoboam (Matthew 1) and Jeroboam (Luke 3)",
+        "Judah (Matthew 1) and Levi (Luke 3)"
+      ],
+      "correctIndex": 1,
+      "explanation": "Matthew 1 traces the legal royal succession through Solomon to Joseph, while Luke 3 traces the natural bloodline through David's son Nathan to Mary!"
+    }
+  },
+  {
+    "id": "era-6",
+    "chapter": 6,
+    "eraKey": "exile",
+    "title": "Exile, Return & The 70 Weeks",
+    "years": "607 – 30 B.C.E.",
+    "subtitle": "Zerubbabel's bridge, Esther's courage, and Daniel's 483-year countdown",
+    "narrative": [
+      "In 607 B.C.E., Babylon destroyed Jerusalem and toppled the Davidic monarchy. Yet Jehovah's word never failed. In 539 B.C.E., Medo-Persia conquered Babylon, and the angel Gabriel delivered Daniel 9:24-25's breathtaking chronological key: 69 prophetic 'weeks' (483 years) from the decree to rebuild Jerusalem would pinpoint the exact year Messiah would appear.",
+      "In 537 B.C.E., Governor Zerubbabel — a remarkable bridge figure appearing in BOTH Matthew 1 and Luke 3 via Shealtiel — led exiles home to rebuild the temple. In 483 B.C.E., Queen Esther and Mordecai saved the nation from annihilation. Then in 455 B.C.E., Artaxerxes issued the command to reconstruct Jerusalem's walls, starting the 483-year countdown across the Persian, Greek (331 B.C.E.), and Roman (30 B.C.E.) empires!"
+    ],
+    "prophecyIds": [
+      "p12"
+    ],
+    "steppingStoneNodeIds": [
+      "n393",
+      "n395",
+      "n738",
+      "n568",
+      "n260",
+      "n316",
+      "n318"
+    ],
+    "checkIn": {
+      "question": "Counting 69 prophetic 'weeks' (483 years) from 455 B.C.E. — remembering there is NO zero year — arrives at what exact year?",
+      "options": [
+        "2 B.C.E.",
+        "28 C.E.",
+        "29 C.E.",
+        "33 C.E."
+      ],
+      "correctIndex": 2,
+      "explanation": "455 B.C.E. to 1 B.C.E. is 454 years; crossing directly to 1 C.E. (no year 0) adds 1 year (455); plus 28 more years brings us to 29 C.E. — the exact year Jesus was baptized!"
+    }
+  },
+  {
+    "id": "era-7",
+    "chapter": 7,
+    "eraKey": "offspring",
+    "title": "The Promised Offspring",
+    "years": "2 B.C.E. – 29 C.E.",
+    "subtitle": "Legal right and natural bloodline converge in Jesus of Nazareth",
+    "narrative": [
+      "In 2 B.C.E., after four millennia of carefully preserved genealogy, the two great Davidic streams converged in Bethlehem. Mary — descended naturally from David through Nathan and Heli (Luke 3:23-38) — received Gabriel's declaration at Luke 1:32 that her child would inherit David's throne forever. Joseph — legal royal heir through Solomon and Jacob (Matthew 1:1-16) — adopted Jesus as his legal son, giving Jesus both indisputable royal title and Davidic bloodline while bypassing the curse on Jeconiah's physical seed!",
+      "In the fall of 29 C.E., right on schedule at the end of Daniel's 69 weeks, John the Baptizer (from Levi's priestly line) baptized Jesus in the Jordan River. Anointed by holy spirit, Jesus became the Messiah — The Promised Offspring foretold four thousand years earlier in Eden."
+    ],
+    "prophecyIds": [
+      "p13",
+      "p1"
+    ],
+    "steppingStoneNodeIds": [
+      "n360",
+      "n445",
+      "n333",
+      "n444",
+      "n149",
+      "n684"
+    ],
+    "checkIn": {
+      "question": "Why are BOTH Matthew 1 (via Joseph) and Luke 3 (via Mary) essential to establish Jesus as the Promised Offspring?",
+      "options": [
+        "One traces from Levi and the other from Benjamin",
+        "Matthew 1 establishes Jesus' legal right to David's throne via Solomon, while Luke 3 establishes his natural descent from David via Nathan",
+        "They list the same kings in reverse chronological order",
+        "Matthew 1 covers Adam to Abraham while Luke 3 covers Abraham to David"
+      ],
+      "correctIndex": 1,
+      "explanation": "Through Joseph's legal adoption (Matthew 1 via Solomon) Jesus held the legal royal title, and through Mary (Luke 3 via Nathan) he held direct natural descent from King David!"
+    }
+  }
+]

@@ -1,0 +1,273 @@
+[
+  {
+    "id": "chr_1",
+    "order": 1,
+    "year": -4026,
+    "yearLabel": "4026 B.C.E.",
+    "title": "Adam is created",
+    "era": "eden",
+    "description": "Creation of Adam and Eve in Eden; Genesis 3:15 pronounces the first Messianic promise.",
+    "linkedNodeIds": [
+      "n619",
+      "n618",
+      "n622"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029351&par=1"
+  },
+  {
+    "id": "chr_2",
+    "order": 2,
+    "year": -2370,
+    "yearLabel": "2370 B.C.E.",
+    "title": "The Global Flood",
+    "era": "flood",
+    "description": "1,656 years after Adam's creation, Jehovah brings the Global Flood; Noah's family of 8 survives in the ark.",
+    "linkedNodeIds": [
+      "n661",
+      "n662",
+      "n675"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029174&par=1"
+  },
+  {
+    "id": "chr_3",
+    "order": 3,
+    "year": -1943,
+    "yearLabel": "1943 B.C.E.",
+    "title": "Abraham crosses the Euphrates",
+    "era": "patriarchs",
+    "description": "427 years after the Flood, Abraham enters Canaan and the 430-year covenant period begins (Galatians 3:17).",
+    "linkedNodeIds": [
+      "n671",
+      "n667",
+      "n623"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029362&par=1"
+  },
+  {
+    "id": "chr_4",
+    "order": 4,
+    "year": -1913,
+    "yearLabel": "1913 B.C.E.",
+    "title": "Isaac weaned — '400 years of affliction' begins",
+    "era": "patriarchs",
+    "description": "At age 5 Isaac is weaned and mocked by Ishmael, starting the 400-year affliction foretold at Genesis 15:13.",
+    "linkedNodeIds": [
+      "n668",
+      "n139"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029247&par=1"
+  },
+  {
+    "id": "chr_5",
+    "order": 5,
+    "year": -1728,
+    "yearLabel": "1728 B.C.E.",
+    "title": "Israel settles in Egypt",
+    "era": "patriarchs",
+    "description": "Jacob (Israel) moves his household of 70 into Goshen during the great famine under Prime Minister Joseph.",
+    "linkedNodeIds": [
+      "n670",
+      "n50"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029113&par=1"
+  },
+  {
+    "id": "chr_6",
+    "order": 6,
+    "year": -1513,
+    "yearLabel": "1513 B.C.E.",
+    "title": "Moses leads the Exodus from Egypt",
+    "era": "tribes",
+    "description": "Exactly 430 years after 1943 B.C.E., Jehovah delivers Israel from Egypt and inaugurates the Law Covenant at Sinai.",
+    "linkedNodeIds": [
+      "n147",
+      "n148",
+      "n743"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029218&par=1"
+  },
+  {
+    "id": "chr_7",
+    "order": 7,
+    "year": -1117,
+    "yearLabel": "1117 B.C.E.",
+    "title": "Saul begins to rule as king in Israel",
+    "era": "david",
+    "description": "After 356 years of the Judges, Samuel anoints Saul of Benjamin as Israel's first human king.",
+    "linkedNodeIds": [
+      "n567",
+      "n146",
+      "n695"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029363&par=1"
+  },
+  {
+    "id": "chr_8",
+    "order": 8,
+    "year": -997,
+    "yearLabel": "997 B.C.E.",
+    "title": "Kingdom of Israel splits into two",
+    "era": "david",
+    "description": "Following Solomon's death, the nation splits into Northern Israel and Southern Judah for 390 years (Ezekiel 4:5).",
+    "linkedNodeIds": [
+      "n739",
+      "n370",
+      "n638"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029349&par=1"
+  },
+  {
+    "id": "chr_9",
+    "order": 9,
+    "year": -740,
+    "yearLabel": "740 B.C.E.",
+    "title": "Assyria destroys Northern Israel",
+    "era": "david",
+    "description": "The Assyrian Empire conquers Samaria and exiles the ten-tribe northern kingdom; David's line endures in Judah.",
+    "linkedNodeIds": [
+      "n381",
+      "n639"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029300&par=1"
+  },
+  {
+    "id": "chr_10",
+    "order": 10,
+    "year": -607,
+    "yearLabel": "607 B.C.E.",
+    "title": "Babylon destroys Judah and Jerusalem",
+    "era": "exile",
+    "description": "Nebuchadnezzar destroys Jerusalem and Solomon's temple, ending 510 years of Israelite kings.",
+    "linkedNodeIds": [
+      "n393",
+      "n640"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029098&par=1"
+  },
+  {
+    "id": "chr_11",
+    "order": 11,
+    "year": -539,
+    "yearLabel": "539 B.C.E.",
+    "title": "Medo-Persia conquers Babylon",
+    "era": "exile",
+    "description": "Cyrus the Great overthrows Babylon overnight, setting the stage for Jewish liberation and Daniel's 70-weeks prophecy.",
+    "linkedNodeIds": [
+      "n641",
+      "n633"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029879&par=1"
+  },
+  {
+    "id": "chr_12",
+    "order": 12,
+    "year": -537,
+    "yearLabel": "537 B.C.E.",
+    "title": "Jews return under Governor Zerubbabel",
+    "era": "exile",
+    "description": "Under Cyrus' decree, a faithful remnant returns to Jerusalem led by Zerubbabel — key ancestor in both Matthew 1 and Luke 3.",
+    "linkedNodeIds": [
+      "n738",
+      "n395"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029134&par=1"
+  },
+  {
+    "id": "chr_13",
+    "order": 13,
+    "year": -483,
+    "yearLabel": "483 B.C.E.",
+    "title": "Esther and Mordecai save the Jews",
+    "era": "exile",
+    "description": "In the Persian court, Queen Esther and Mordecai foil Haman's decree, safeguarding the Messianic nation.",
+    "linkedNodeIds": [
+      "n568",
+      "n260"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029244&par=1"
+  },
+  {
+    "id": "chr_14",
+    "order": 14,
+    "year": -455,
+    "yearLabel": "455 B.C.E.",
+    "title": "Order to rebuild Jerusalem — 70 Weeks begin",
+    "era": "exile",
+    "description": "Artaxerxes authorizes Nehemiah to rebuild Jerusalem's walls, launching Daniel 9:25's 69-week (483-year) countdown to Messiah.",
+    "linkedNodeIds": [
+      "n633"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=27009024&pub=nwtsty"
+  },
+  {
+    "id": "chr_15",
+    "order": 15,
+    "year": -406,
+    "yearLabel": "406 B.C.E.",
+    "title": "Jerusalem is completely rebuilt",
+    "era": "exile",
+    "description": "7 prophetic weeks (49 years) after 455 B.C.E., Jerusalem's restoration is completed.",
+    "linkedNodeIds": [
+      "n633"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&bible=27009024&pub=nwtsty"
+  },
+  {
+    "id": "chr_16",
+    "order": 16,
+    "year": -331,
+    "yearLabel": "331 B.C.E.",
+    "title": "Greece becomes dominant world power",
+    "era": "exile",
+    "description": "Alexander the Great defeats Persia, spreading Koine Greek — the future language of the Christian Greek Scriptures.",
+    "linkedNodeIds": [
+      "n642"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200002908&par=2"
+  },
+  {
+    "id": "chr_17",
+    "order": 17,
+    "year": -30,
+    "yearLabel": "30 B.C.E.",
+    "title": "Rome becomes dominant world power",
+    "era": "offspring",
+    "description": "Rome annexes Egypt and rules the Mediterranean world, preparing the census that brings Joseph and Mary to Bethlehem.",
+    "linkedNodeIds": [
+      "n643"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029882&par=1"
+  },
+  {
+    "id": "chr_18",
+    "order": 18,
+    "year": -2,
+    "yearLabel": "2 B.C.E.",
+    "title": "The birth of Jesus in Bethlehem",
+    "era": "offspring",
+    "description": "Born in Bethlehem of Judea to Mary (Luke 3) and adopted by Joseph (Matthew 1), fulfilling Micah 5:2 and Luke 1:32.",
+    "linkedNodeIds": [
+      "n684",
+      "n444",
+      "n445",
+      "n634"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029802&par=1"
+  },
+  {
+    "id": "chr_19",
+    "order": 19,
+    "year": 29,
+    "yearLabel": "29 C.E.",
+    "title": "Jesus baptized — becomes the Promised Offspring",
+    "era": "offspring",
+    "description": "Exactly 483 years (69 prophetic weeks) after 455 B.C.E. (with no year zero!), Jesus is baptized by John and anointed as Messiah.",
+    "linkedNodeIds": [
+      "n684",
+      "n149",
+      "n633"
+    ],
+    "jwUrl": "https://www.jw.org/finder?srcid=jwlshare&wtlocale=E&prefer=lang&docid=1200029802&par=1"
+  }
+]
