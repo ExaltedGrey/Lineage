@@ -39,13 +39,13 @@ const ERA_BANDS = [
 ];
 
 const QUICK_JUMPS = [
-  { label: 'Adam', id: 'n619', zoom: 1.5 },
-  { label: 'Noah', id: 'n661', zoom: 1.45 },
-  { label: 'Abraham', id: 'n671', zoom: 1.45 },
-  { label: '12 Tribes', id: 'n736', zoom: 0.95 },
-  { label: 'David', id: 'n669', zoom: 1.45 },
-  { label: 'Zerubbabel', id: 'n738', zoom: 1.45 },
-  { label: 'Jesus', id: 'n684', zoom: 1.55 },
+  { label: 'Adam', id: 'n619', zoom: 1.35 },
+  { label: 'Noah', id: 'n661', zoom: 1.3 },
+  { label: 'Abraham', id: 'n671', zoom: 1.3 },
+  { label: '12 Tribes', id: 'n736', zoom: 0.9 },
+  { label: 'David', id: 'n669', zoom: 1.3 },
+  { label: 'Zerubbabel', id: 'n738', zoom: 1.3 },
+  { label: 'Jesus', id: 'n684', zoom: 1.4 },
 ];
 
 function getNodePalette(node) {
@@ -120,26 +120,36 @@ export default function LineageExplorer({
   // Camera transform: translate(tx, ty) scale(scale)
   const [transform, setTransform] = useState({ tx: 0, ty: 0, scale: 0.55 });
   const [isDragging, setIsDragging] = useState(false);
-  const dragStartRef = useRef(null);
-  const didDragRef = useRef(false);
 
-  const fitToScreen = useCallback((focusLineOnly = false) => {
+  // Multi-touch & drag tracking
+  const activePointersRef = useRef(new Map());
+  const gestureStartRef = useRef(null);
+  const didDragRef = useRef(false);
+  const transformRef = useRef(transform);
+  useEffect(() => {
+    transformRef.current = transform;
+  }, [transform]);
+
+  const fitToScreen = useCallback((focusLineOnly = false, forceFullOverview = false) => {
     const el = containerRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    if (focusLineOnly) {
-      // Frame the central Messianic spine nicely (x: 680..1080, y: 120..2550)
-      const scale = Math.min(rect.width / 620, rect.height / 1450);
-      const clamped = Math.max(0.45, Math.min(1.15, scale));
-      const tx = rect.width / 2 - 875 * clamped;
-      const ty = 24 - 130 * clamped;
-      setTransform({ tx, ty, scale: clamped });
+    const isNarrow = rect.width < 640;
+
+    if (focusLineOnly || (isNarrow && !forceFullOverview)) {
+      // Frame the central Messianic spine cleanly at readable scale on phones
+      const scale = isNarrow
+        ? Math.max(0.72, Math.min(1.05, rect.width / 460))
+        : Math.max(0.45, Math.min(1.15, Math.min(rect.width / 620, rect.height / 1450)));
+      const tx = rect.width / 2 - 875 * scale;
+      const ty = 18 - 100 * scale;
+      setTransform({ tx, ty, scale });
     } else {
-      const scaleX = (rect.width - 32) / DATA_META.pageWidth;
-      const scaleY = (rect.height - 32) / DATA_META.pageHeight;
-      const scale = Math.max(0.28, Math.min(scaleX, scaleY, 0.72));
+      const scaleX = (rect.width - 24) / DATA_META.pageWidth;
+      const scaleY = (rect.height - 24) / DATA_META.pageHeight;
+      const scale = Math.max(0.22, Math.min(scaleX, scaleY, 0.72));
       const tx = (rect.width - DATA_META.pageWidth * scale) / 2;
-      const ty = 16;
+      const ty = 14;
       setTransform({ tx, ty, scale });
     }
   }, []);
@@ -148,7 +158,9 @@ export default function LineageExplorer({
     const el = containerRef.current;
     if (!el || !node) return;
     const rect = el.getBoundingClientRect();
-    const s = Math.max(0.4, Math.min(2.8, targetScale));
+    const isNarrow = rect.width < 640;
+    const adjustedScale = isNarrow ? Math.min(targetScale, 1.25) : targetScale;
+    const s = Math.max(0.4, Math.min(2.8, adjustedScale));
     const tx = rect.width / 2 - node.cx * s;
     const ty = rect.height / 2 - node.cy * s;
     setTransform({ tx, ty, scale: s });
@@ -157,7 +169,10 @@ export default function LineageExplorer({
 
   // Initial fit on mount
   useEffect(() => {
-    fitToScreen(initialFocusMessianic);
+    const raf = requestAnimationFrame(() => {
+      fitToScreen(initialFocusMessianic, false);
+    });
+    return () => cancelAnimationFrame(raf);
   }, [fitToScreen, initialFocusMessianic]);
 
   // Handle external fly-to request (e.g., from ProfileDrawer)
@@ -170,7 +185,7 @@ export default function LineageExplorer({
       setActiveFilter((prev) =>
         prev !== 'all' && !focusTargetNode.categories.includes(prev) ? 'all' : prev
       );
-      flyToNode(focusTargetNode, 1.55);
+      flyToNode(focusTargetNode, 1.5);
       onClearFocusTarget?.();
     }, 40);
     return () => clearTimeout(timer);
@@ -200,35 +215,98 @@ export default function LineageExplorer({
     return () => el.removeEventListener('wheel', onWheel);
   }, []);
 
+  const captureGestureBaseline = () => {
+    const pts = Array.from(activePointersRef.current.values());
+    const cur = transformRef.current;
+    if (pts.length === 1) {
+      gestureStartRef.current = {
+        mode: 'pan',
+        x: pts[0].x,
+        y: pts[0].y,
+        tx: cur.tx,
+        ty: cur.ty,
+        scale: cur.scale,
+      };
+    } else if (pts.length >= 2) {
+      const el = containerRef.current;
+      const rect = el ? el.getBoundingClientRect() : { left: 0, top: 0 };
+      const p1 = pts[0];
+      const p2 = pts[1];
+      const midX = (p1.x + p2.x) / 2 - rect.left;
+      const midY = (p1.y + p2.y) / 2 - rect.top;
+      const dist = Math.hypot(p2.x - p1.x, p2.y - p1.y) || 1;
+      gestureStartRef.current = {
+        mode: 'pinch',
+        midX,
+        midY,
+        dist,
+        tx: cur.tx,
+        ty: cur.ty,
+        scale: cur.scale,
+      };
+    } else {
+      gestureStartRef.current = null;
+    }
+  };
+
   const handlePointerDown = (e) => {
     if (e.button !== 0 && e.pointerType === 'mouse') return;
+    // Ignore taps on overlay controls
+    if (e.target.closest('button, input, a')) return;
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+    activePointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (activePointersRef.current.size === 1) {
+      didDragRef.current = false;
+    } else {
+      didDragRef.current = true;
+    }
     setIsDragging(true);
-    didDragRef.current = false;
-    dragStartRef.current = {
-      x: e.clientX,
-      y: e.clientY,
-      tx: transform.tx,
-      ty: transform.ty,
-    };
+    captureGestureBaseline();
   };
 
   const handlePointerMove = (e) => {
-    if (!isDragging || !dragStartRef.current) return;
-    const dx = e.clientX - dragStartRef.current.x;
-    const dy = e.clientY - dragStartRef.current.y;
-    if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
+    if (!activePointersRef.current.has(e.pointerId)) return;
+    activePointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const g = gestureStartRef.current;
+    if (!g) return;
+
+    if (g.mode === 'pan' && activePointersRef.current.size === 1) {
+      const dx = e.clientX - g.x;
+      const dy = e.clientY - g.y;
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        didDragRef.current = true;
+      }
+      setTransform((prev) => ({
+        ...prev,
+        tx: g.tx + dx,
+        ty: g.ty + dy,
+      }));
+    } else if (g.mode === 'pinch' && activePointersRef.current.size >= 2) {
+      const pts = Array.from(activePointersRef.current.values());
+      const el = containerRef.current;
+      const rect = el ? el.getBoundingClientRect() : { left: 0, top: 0 };
+      const curMidX = (pts[0].x + pts[1].x) / 2 - rect.left;
+      const curMidY = (pts[0].y + pts[1].y) / 2 - rect.top;
+      const curDist = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y) || 1;
+      const nextScale = Math.max(0.22, Math.min(3.5, g.scale * (curDist / g.dist)));
+      const ratio = nextScale / g.scale;
       didDragRef.current = true;
+      setTransform({
+        scale: nextScale,
+        tx: curMidX - (g.midX - g.tx) * ratio,
+        ty: curMidY - (g.midY - g.ty) * ratio,
+      });
     }
-    setTransform((prev) => ({
-      ...prev,
-      tx: dragStartRef.current.tx + dx,
-      ty: dragStartRef.current.ty + dy,
-    }));
   };
 
-  const handlePointerUp = () => {
-    setIsDragging(false);
-    dragStartRef.current = null;
+  const handlePointerUp = (e) => {
+    activePointersRef.current.delete(e.pointerId);
+    if (activePointersRef.current.size === 0) {
+      setIsDragging(false);
+      gestureStartRef.current = null;
+    } else {
+      captureGestureBaseline();
+    }
   };
 
   const zoomStep = (multiplier) => {
@@ -269,91 +347,106 @@ export default function LineageExplorer({
     setFocusMessianic(next);
     if (next) {
       setActiveFilter('all');
-      fitToScreen(true);
+      fitToScreen(true, false);
     } else {
-      fitToScreen(false);
+      fitToScreen(false, false);
     }
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+    <div className="explorer-root">
       {/* Explorer Toolbar */}
       <div className="explorer-toolbar">
-        <div className="explorer-search-wrap">
-          <Search size={15} className="search-icon-abs" />
-          <input
-            type="text"
-            id="explorer-search"
-            className="explorer-search-input"
-            placeholder={`Search all ${DATA_META.totalNodes} figures, tribes, nations...`}
-            value={searchQuery}
-            onFocus={() => setSearchOpen(true)}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setSearchOpen(true);
-            }}
-            aria-label="Search lineage chart"
-          />
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={() => {
-                setSearchQuery('');
-                setSearchOpen(false);
+        <div className="explorer-toolbar-primary">
+          <div className="explorer-search-wrap">
+            <Search size={15} className="search-icon-abs" />
+            <input
+              type="text"
+              id="explorer-search"
+              className="explorer-search-input"
+              placeholder={`Search ${DATA_META.totalNodes} figures, tribes...`}
+              value={searchQuery}
+              onFocus={() => setSearchOpen(true)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setSearchOpen(true);
               }}
-              aria-label="Clear search"
-              style={{
-                position: 'absolute',
-                right: 8,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'none',
-                border: 'none',
-                color: 'var(--ink-muted)',
-                padding: 4,
-                display: 'flex',
-              }}
-            >
-              <X size={14} />
-            </button>
-          )}
+              aria-label="Search lineage chart"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery('');
+                  setSearchOpen(false);
+                }}
+                aria-label="Clear search"
+                style={{
+                  position: 'absolute',
+                  right: 8,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--ink-muted)',
+                  padding: 4,
+                  display: 'flex',
+                }}
+              >
+                <X size={14} />
+              </button>
+            )}
 
-          {searchOpen && searchResults.length > 0 && (
-            <div className="search-results-popover" role="listbox">
-              {searchResults.map((node) => (
-                <button
-                  key={node.id}
-                  type="button"
-                  className="search-result-item"
-                  onClick={() => {
-                    if (focusMessianic && !node.isMessianic) setFocusMessianic(false);
-                    if (activeFilter !== 'all' && !node.categories.includes(activeFilter)) {
-                      setActiveFilter('all');
-                    }
-                    flyToNode(node, 1.65);
-                    onSelectNode(node);
-                    setSearchOpen(false);
-                  }}
-                >
-                  <div>
-                    <div style={{ fontWeight: 700, color: 'var(--slate-teal)', fontSize: '0.88rem' }}>
-                      {node.name}
+            {searchOpen && searchResults.length > 0 && (
+              <div className="search-results-popover" role="listbox">
+                {searchResults.map((node) => (
+                  <button
+                    key={node.id}
+                    type="button"
+                    className="search-result-item"
+                    onClick={() => {
+                      if (focusMessianic && !node.isMessianic) setFocusMessianic(false);
+                      if (activeFilter !== 'all' && !node.categories.includes(activeFilter)) {
+                        setActiveFilter('all');
+                      }
+                      flyToNode(node, 1.55);
+                      onSelectNode(node);
+                      setSearchOpen(false);
+                    }}
+                  >
+                    <div>
+                      <div style={{ fontWeight: 700, color: 'var(--slate-teal)', fontSize: '0.88rem' }}>
+                        {node.name}
+                      </div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--ink-muted)' }}>
+                        {node.role}
+                        {node.birthYear != null
+                          ? ` · ${formatYearShort(node.birthYear)}–${formatYearShort(node.deathYear)}`
+                          : ''}
+                      </div>
                     </div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--ink-muted)' }}>
-                      {node.role}
-                      {node.birthYear != null
-                        ? ` · ${formatYearShort(node.birthYear)}–${formatYearShort(node.deathYear)}`
-                        : ''}
-                    </div>
-                  </div>
-                  <Crosshair size={14} color="var(--crimson)" />
-                </button>
-              ))}
-            </div>
-          )}
+                    <Crosshair size={14} color="var(--crimson)" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Prominent Line-to-Jesus Focus Toggle */}
+          <button
+            type="button"
+            id="focus-messianic-toggle"
+            className={`focus-toggle-btn ${focusMessianic ? 'active' : ''}`}
+            onClick={toggleFocusMessianic}
+            aria-pressed={focusMessianic}
+          >
+            <GitBranch size={15} />
+            <span className="focus-label-full">Focus: Line to Jesus Only</span>
+            <span className="focus-label-short">Line to Jesus</span>
+          </button>
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Category Filter Pills (single scrollable strip on mobile) */}
         <div className="filter-pills" role="group" aria-label="Filter chart categories">
           {FILTER_KEYS.map((key) => {
             const cfg = CATEGORY_CONFIG[key];
@@ -373,18 +466,6 @@ export default function LineageExplorer({
             );
           })}
         </div>
-
-        {/* Prominent Line-to-Jesus Focus Toggle */}
-        <button
-          type="button"
-          id="focus-messianic-toggle"
-          className={`focus-toggle-btn ${focusMessianic ? 'active' : ''}`}
-          onClick={toggleFocusMessianic}
-          aria-pressed={focusMessianic}
-        >
-          <GitBranch size={15} />
-          <span>Focus: Line to Jesus Only</span>
-        </button>
       </div>
 
       {/* Interactive Pan-and-Zoom SVG Canvas */}
@@ -394,7 +475,7 @@ export default function LineageExplorer({
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
-        onPointerLeave={handlePointerUp}
+        onPointerCancel={handlePointerUp}
         onClick={() => setSearchOpen(false)}
       >
         {/* Legend */}
@@ -498,7 +579,7 @@ export default function LineageExplorer({
               </g>
             ))}
 
-            {/* Matthew 1 & Luke 3 Branch Labels when focused or zoomed */}
+            {/* Matthew 1 & Luke 3 Branch Labels */}
             <g opacity={focusMessianic || transform.scale > 0.4 ? 0.95 : 0.65}>
               <rect x="650" y="1862" width="130" height="24" rx="5" fill="#EBF2F8" stroke="#2E5C8A" strokeWidth="1.2" />
               <text x="715" y="1878" textAnchor="middle" fill="#2E5C8A" fontSize="10" fontWeight="700" fontFamily="Inter, sans-serif">
@@ -534,7 +615,6 @@ export default function LineageExplorer({
                     : 0.45
                   : 0.08;
 
-                // Clean elbow/curve path
                 const midY = (a.cy + b.cy) / 2;
                 const d =
                   Math.abs(a.cy - b.cy) < 18
@@ -642,7 +722,7 @@ export default function LineageExplorer({
           </g>
         </svg>
 
-        {/* Quick-Jump Era Landmarks */}
+        {/* Quick-Jump Era Landmarks (single horizontal bar on mobile) */}
         <div className="explorer-quick-jump">
           <span className="quick-jump-label">Fly To</span>
           {QUICK_JUMPS.map((item) => {
@@ -695,10 +775,10 @@ export default function LineageExplorer({
             className="zoom-btn"
             onClick={(e) => {
               e.stopPropagation();
-              fitToScreen(focusMessianic);
+              fitToScreen(focusMessianic, true);
             }}
-            title="Fit chart to view"
-            aria-label="Fit chart to view"
+            title="Fit full chart to view"
+            aria-label="Fit full chart to view"
           >
             <Maximize2 size={17} />
           </button>

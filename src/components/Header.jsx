@@ -2,37 +2,50 @@ import { BookOpen, Compass, Clock, Trophy, ScrollText } from 'lucide-react';
 import { DATA_META } from '../utils/dataStore';
 
 const MODES = [
-  { id: 'story', label: 'Story Journey', icon: BookOpen },
-  { id: 'explorer', label: 'Lineage Explorer', icon: Compass },
-  { id: 'timeline', label: 'B.C.E. Timeline', icon: Clock },
-  { id: 'quiz', label: 'Lineage Challenge', icon: Trophy },
+  { id: 'story', label: 'Story Journey', shortLabel: 'Story', icon: BookOpen },
+  { id: 'explorer', label: 'Lineage Explorer', shortLabel: 'Explorer', icon: Compass },
+  { id: 'timeline', label: 'B.C.E. Timeline', shortLabel: 'Timeline', icon: Clock },
+  { id: 'quiz', label: 'Lineage Challenge', shortLabel: 'Quiz', icon: Trophy },
 ];
 
 export default function Header({ activeMode, onModeChange, completedErasCount, earnedBadgesCount }) {
   return (
     <header className="masthead">
       <div className="masthead-inner">
-        <button
-          type="button"
-          className="brand"
-          onClick={() => onModeChange('story')}
-          aria-label="The Promised Offspring home"
-        >
-          <span className="brand-crest" aria-hidden="true">
-            <ScrollText size={22} strokeWidth={1.8} />
-          </span>
-          <span>
-            <span className="brand-title" style={{ display: 'block' }}>
-              The Promised Offspring
+        <div className="masthead-top-row">
+          <button
+            type="button"
+            className="brand"
+            onClick={() => onModeChange('story')}
+            aria-label="The Promised Offspring home"
+          >
+            <span className="brand-crest" aria-hidden="true">
+              <ScrollText size={20} strokeWidth={1.8} />
             </span>
-            <span className="brand-subtitle" style={{ display: 'block' }}>
-              Genesis 3:15 · {DATA_META.totalNodes} Interactive Biblical Nodes
+            <span>
+              <span className="brand-title" style={{ display: 'block' }}>
+                The Promised Offspring
+              </span>
+              <span className="brand-subtitle" style={{ display: 'block' }}>
+                Genesis 3:15 · {DATA_META.totalNodes} Interactive Biblical Nodes
+              </span>
             </span>
-          </span>
-        </button>
+          </button>
+
+          <div className="masthead-stats-mobile">
+            <span className="stat-chip stat-chip-compact" title="Completed Story Eras">
+              <BookOpen size={12} />
+              <span>{completedErasCount}/7</span>
+            </span>
+            <span className="stat-chip stat-chip-compact" title="Earned Archival Badges">
+              <Trophy size={12} />
+              <span>{earnedBadgesCount}</span>
+            </span>
+          </div>
+        </div>
 
         <nav className="mode-nav" aria-label="Primary sections">
-          {MODES.map(({ id, label, icon: Icon }) => (
+          {MODES.map(({ id, label, shortLabel, icon: Icon }) => (
             <button
               key={id}
               type="button"
@@ -42,7 +55,8 @@ export default function Header({ activeMode, onModeChange, completedErasCount, e
               aria-current={activeMode === id ? 'page' : undefined}
             >
               <Icon size={16} strokeWidth={2} />
-              <span>{label}</span>
+              <span className="mode-label-full">{label}</span>
+              <span className="mode-label-short">{shortLabel}</span>
             </button>
           ))}
         </nav>

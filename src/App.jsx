@@ -120,7 +120,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <div className={`app-shell ${activeMode === 'explorer' ? 'explorer-mode' : ''}`}>
       <Header
         activeMode={activeMode}
         onModeChange={(mode) => {
@@ -171,6 +171,6 @@ export default function App() {
         onSelectNode={setSelectedNode}
         onLocateInExplorer={handleLocateInExplorer}
       />
-    </>
+    </div>
   );
 }
