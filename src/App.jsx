@@ -1,10 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Header from './components/Header';
 import StoryJourney from './components/StoryJourney';
 import LineageExplorer from './components/LineageExplorer';
 import LifespanTimeline from './components/LifespanTimeline';
 import LineageQuiz from './components/LineageQuiz';
 import ProfileDrawer from './components/ProfileDrawer';
+import FloatingRewardToast from './components/FloatingRewardToast';
 
 const STORAGE_KEY = 'promised_offspring_progress_v2';
 
@@ -82,6 +83,14 @@ export default function App() {
   const [explorerFocusTarget, setExplorerFocusTarget] = useState(null);
   const [explorerFocusMessianic, setExplorerFocusMessianic] = useState(false);
   const [progress, setProgress] = useState(loadProgress);
+  const [rewardToast, setRewardToast] = useState(null);
+  const toastTimerRef = useRef(null);
+
+  const showToast = useCallback((text) => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    setRewardToast({ id: Date.now(), text });
+    toastTimerRef.current = setTimeout(() => setRewardToast(null), 2100);
+  }, []);
 
   useEffect(() => {
     try {
@@ -165,89 +174,130 @@ export default function App() {
     }));
   }, []);
 
-  const handleCompleteEra = useCallback((eraId) => {
-    setProgress((prev) => {
-      const alreadyDone = prev.completedEras.includes(eraId);
-      return {
-        ...prev,
-        xp: alreadyDone ? prev.xp : prev.xp + 50,
-        completedEras: alreadyDone ? prev.completedEras : [...prev.completedEras, eraId],
-        family: advanceFamilyTurn(prev.family, 2),
-      };
-    });
-  }, []);
+  const handleCompleteEra = useCallback(
+    (eraId) => {
+      setProgress((prev) => {
+        const alreadyDone = prev.completedEras.includes(eraId);
+        const curPlayer = prev.family.enabled ? prev.family.players[prev.family.turnIndex] : null;
+        if (!alreadyDone) {
+          showToast(
+            curPlayer
+              ? `+50 XP · ⭐ ${curPlayer.name} +2 Stars! 3D Relic Unlocked!`
+              : '+50 XP · 3D Relic Unlocked!'
+          );
+        } else if (curPlayer) {
+          showToast(`⭐ ${curPlayer.name} +2 Family Stars!`);
+        }
+        return {
+          ...prev,
+          xp: alreadyDone ? prev.xp : prev.xp + 50,
+          completedEras: alreadyDone ? prev.completedEras : [...prev.completedEras, eraId],
+          family: advanceFamilyTurn(prev.family, 2),
+        };
+      });
+    },
+    [showToast]
+  );
 
-  const handleCompleteMiniGame = useCallback((eraId) => {
-    setProgress((prev) => {
-      const alreadyDone = prev.completedMiniGames.includes(eraId);
-      return {
-        ...prev,
-        xp: alreadyDone ? prev.xp : prev.xp + (eraId === 'era-7' ? 75 : 50),
-        completedMiniGames: alreadyDone
-          ? prev.completedMiniGames
-          : [...prev.completedMiniGames, eraId],
-        family: advanceFamilyTurn(prev.family, 2),
-      };
-    });
-  }, []);
+  const handleCompleteMiniGame = useCallback(
+    (eraId) => {
+      setProgress((prev) => {
+        const alreadyDone = prev.completedMiniGames.includes(eraId);
+        const bonus = eraId === 'era-7' ? 75 : 50;
+        const curPlayer = prev.family.enabled ? prev.family.players[prev.family.turnIndex] : null;
+        if (!alreadyDone) {
+          showToast(
+            curPlayer
+              ? `+${bonus} XP · ⭐ ${curPlayer.name} +2 Stars!`
+              : `+${bonus} XP · Mini-Game Cleared!`
+          );
+        }
+        return {
+          ...prev,
+          xp: alreadyDone ? prev.xp : prev.xp + bonus,
+          completedMiniGames: alreadyDone
+            ? prev.completedMiniGames
+            : [...prev.completedMiniGames, eraId],
+          family: advanceFamilyTurn(prev.family, 2),
+        };
+      });
+    },
+    [showToast]
+  );
 
-  const handleUnsealProphecy = useCallback((prophecyId) => {
-    setProgress((prev) => {
-      if (prev.unsealedProphecies.includes(prophecyId)) return prev;
-      return {
-        ...prev,
-        xp: prev.xp + 25,
-        unsealedProphecies: [...prev.unsealedProphecies, prophecyId],
-      };
-    });
-  }, []);
+  const handleUnsealProphecy = useCallback(
+    (prophecyId) => {
+      setProgress((prev) => {
+        if (prev.unsealedProphecies.includes(prophecyId)) return prev;
+        showToast('+25 XP · Prophecy Seal Broken!');
+        return {
+          ...prev,
+          xp: prev.xp + 25,
+          unsealedProphecies: [...prev.unsealedProphecies, prophecyId],
+        };
+      });
+    },
+    [showToast]
+  );
 
-  const handleRecordAnswer = useCallback((isCorrect) => {
-    setProgress((prev) => {
-      const q = prev.quizStats;
-      const totalAnswered = q.totalAnswered + 1;
-      const totalCorrect = q.totalCorrect + (isCorrect ? 1 : 0);
-      const currentStreak = isCorrect ? q.currentStreak + 1 : 0;
-      const bestStreak = Math.max(q.bestStreak, currentStreak);
-      const badges = new Set(q.badges);
+  const handleRecordAnswer = useCallback(
+    (isCorrect) => {
+      setProgress((prev) => {
+        const q = prev.quizStats;
+        const totalAnswered = q.totalAnswered + 1;
+        const totalCorrect = q.totalCorrect + (isCorrect ? 1 : 0);
+        const currentStreak = isCorrect ? q.currentStreak + 1 : 0;
+        const bestStreak = Math.max(q.bestStreak, currentStreak);
+        const badges = new Set(q.badges);
 
-      if (totalCorrect >= 1) badges.add('first-correct');
-      if (bestStreak >= 5) badges.add('streak-5');
-      if (totalCorrect >= 15) badges.add('master-scholar');
+        if (totalCorrect >= 1) badges.add('first-correct');
+        if (bestStreak >= 5) badges.add('streak-5');
+        if (totalCorrect >= 15) badges.add('master-scholar');
 
-      return {
-        ...prev,
-        xp: prev.xp + (isCorrect ? 20 : 0),
-        family: advanceFamilyTurn(prev.family, isCorrect ? 1 : 0),
-        quizStats: {
-          totalAnswered,
-          totalCorrect,
-          currentStreak,
-          bestStreak,
-          badges: Array.from(badges),
-        },
-      };
-    });
-  }, []);
+        if (isCorrect) {
+          const curPlayer = prev.family.enabled ? prev.family.players[prev.family.turnIndex] : null;
+          showToast(curPlayer ? `+20 XP · ⭐ ${curPlayer.name} +1!` : '+20 XP · Nice!');
+        }
 
-  const handleRoundComplete = useCallback((modeId, correctCount, totalCount) => {
-    const pct = totalCount > 0 ? correctCount / totalCount : 0;
-    if (pct < 0.7) return;
-    setProgress((prev) => {
-      const badges = new Set(prev.quizStats.badges);
-      if (modeId === 'chain') badges.add('chain-master');
-      if (modeId === 'prophecy') badges.add('prophecy-keeper');
-      if (modeId === 'timeline') badges.add('timekeeper');
-      return {
-        ...prev,
-        xp: prev.xp + 40,
-        quizStats: {
-          ...prev.quizStats,
-          badges: Array.from(badges),
-        },
-      };
-    });
-  }, []);
+        return {
+          ...prev,
+          xp: prev.xp + (isCorrect ? 20 : 0),
+          family: advanceFamilyTurn(prev.family, isCorrect ? 1 : 0),
+          quizStats: {
+            totalAnswered,
+            totalCorrect,
+            currentStreak,
+            bestStreak,
+            badges: Array.from(badges),
+          },
+        };
+      });
+    },
+    [showToast]
+  );
+
+  const handleRoundComplete = useCallback(
+    (modeId, correctCount, totalCount) => {
+      const pct = totalCount > 0 ? correctCount / totalCount : 0;
+      if (pct < 0.7) return;
+      showToast('+40 XP · Round Bonus Badge!');
+      setProgress((prev) => {
+        const badges = new Set(prev.quizStats.badges);
+        if (modeId === 'chain') badges.add('chain-master');
+        if (modeId === 'prophecy') badges.add('prophecy-keeper');
+        if (modeId === 'timeline') badges.add('timekeeper');
+        return {
+          ...prev,
+          xp: prev.xp + 40,
+          quizStats: {
+            ...prev.quizStats,
+            badges: Array.from(badges),
+          },
+        };
+      });
+    },
+    [showToast]
+  );
 
   const handleLocateInExplorer = useCallback((node) => {
     setSelectedNode(null);
@@ -274,6 +324,8 @@ export default function App() {
 
   return (
     <div className={`app-shell ${activeMode === 'explorer' ? 'explorer-mode' : ''}`}>
+      <FloatingRewardToast toast={rewardToast} />
+
       <Header
         activeMode={activeMode}
         onModeChange={(mode) => {

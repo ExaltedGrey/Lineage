@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import {
   CheckCircle2,
   ChevronLeft,
@@ -16,6 +16,7 @@ import {
   Flame,
   Lightbulb,
   MessageCircleHeart,
+  Box,
 } from 'lucide-react';
 import {
   ALL_STORIES,
@@ -34,12 +35,15 @@ import EraMiniGames from './EraMiniGames';
 import FamilyWorshipBar from './FamilyWorshipBar';
 import { GuideOwl, EraMedallion, ConfettiBurst } from './QuestIllustrations';
 
+const QuestWorld3D = lazy(() => import('./QuestWorld3D'));
+const RelicViewer3D = lazy(() => import('./RelicViewer3D'));
+
 const ERA_EXTRAS = {
   'era-1': {
     relicName: 'Scroll of Eden',
     anchorNodeId: 'n619',
     pipIntro:
-      'Hoo-hoo! Welcome to Eden (4026 B.C.E.)! Tap the crimson wax seal below to uncover the Bible’s very first promise, then try the Pre-Flood Time Order game!',
+      'Hoo-hoo! Welcome to Eden (4026 B.C.E.)! Tap any 3D island above to hop across 4,000 years, or break the crimson wax seal below to uncover the Bible’s very first promise!',
     funFactTitle: 'Whoa! 243-Year Overlap!',
     funFactBody:
       'Methuselah was born in 3339 B.C.E. and Adam died in 3096 B.C.E. That means Methuselah lived alongside Adam for 243 years — and lived right up to 2370 B.C.E., the exact year of the Global Flood!',
@@ -52,7 +56,7 @@ const ERA_EXTRAS = {
     relicName: 'Ark of the Nations',
     anchorNodeId: 'n661',
     pipIntro:
-      'All aboard! After the 2370 B.C.E. Flood, every nation on earth branched out from Noah’s three sons: Shem, Ham, and Japheth (Genesis 10). Ready to sort them?',
+      'All aboard! Look at the rocking 3D Ark and rainbow above! After the 2370 B.C.E. Flood, every nation on earth branched out from Noah’s three sons: Shem, Ham, and Japheth (Genesis 10).',
     funFactTitle: 'Whoa! Noah & Abraham Were Only 2 Years Apart!',
     funFactBody:
       'Noah lived 350 years after the Flood until 2020 B.C.E. — just 2 short years before Abraham was born (2018 B.C.E.)! Even wilder: Flood-survivor Shem overlapped with Abraham for 150 years!',
@@ -65,7 +69,7 @@ const ERA_EXTRAS = {
     relicName: 'Covenant Star',
     anchorNodeId: 'n671',
     pipIntro:
-      'Look up at the stars! In 1943 B.C.E., Abraham crossed the Euphrates and received Jehovah’s oath that ALL nations would be blessed through his offspring. Unseal all 6 patriarchal clues!',
+      'Look at Abraham’s desert camp and spinning stars! In 1943 B.C.E., Abraham crossed the Euphrates and received Jehovah’s oath that ALL nations would be blessed through his offspring.',
     funFactTitle: 'Whoa! Eber Outlived Abraham!',
     funFactBody:
       'Eber (from whom the name “Hebrew” comes!) lived 464 years (2303–1839 B.C.E.) — which means he actually outlived Abraham (died 1843 B.C.E.) by 4 years!',
@@ -78,7 +82,7 @@ const ERA_EXTRAS = {
     relicName: 'Scepter of Judah',
     anchorNodeId: 'n736',
     pipIntro:
-      'Twelve tribes, one royal promise! Jacob foretold at Genesis 49:10 that the scepter belonged to Judah. Discover the courageous women of faith who kept this line shining!',
+      'Twelve tribal pillars, one royal promise! Jacob foretold at Genesis 49:10 that the scepter belonged to Judah. Discover the courageous women of faith who kept this line shining!',
     funFactTitle: 'Whoa! Faith Over Background!',
     funFactBody:
       'Matthew 1 proudly includes faithful women from outside Israel — like Rahab of Jericho and Ruth of Moab — right inside King David’s and Jesus’ family tree!',
@@ -91,7 +95,7 @@ const ERA_EXTRAS = {
     relicName: 'Harp & Crown of David',
     anchorNodeId: 'n669',
     pipIntro:
-      'Here’s the biggest plot twist on the whole chart! At King David, the family tree splits into TWO streams — Matthew 1 (Legal) and Luke 3 (Natural). Tap to see how!',
+      'Look at the 3D bridges ahead! At King David’s citadel, the golden path splits into TWO glowing bridges — Matthew 1 (Blue Legal Line) and Luke 3 (Teal Natural Line)!',
     funFactTitle: 'Whoa! One Mother, Two Royal Branches!',
     funFactBody:
       'According to 1 Chronicles 3:5, Bath-sheba was the mother of BOTH Solomon (who leads the Matthew 1 Legal Line to Joseph) AND Nathan (who leads the Luke 3 Natural Line to Mary)!',
@@ -104,7 +108,7 @@ const ERA_EXTRAS = {
     relicName: 'Daniel’s 70-Weeks Dial',
     anchorNodeId: 'n738',
     pipIntro:
-      'Grab your Bible detective hat! Even after Babylon destroyed Jerusalem in 607 B.C.E., God gave Daniel a 483-year countdown that pinpointed the exact year Messiah would arrive!',
+      'See the spinning 3D gear over Jerusalem’s rebuilt gate? Even after Babylon destroyed Jerusalem in 607 B.C.E., God gave Daniel a 483-year countdown to the exact year Messiah would arrive!',
     funFactTitle: 'Whoa! Remember: There Is NO Year Zero!',
     funFactBody:
       'Counting 69 prophetic “weeks” (483 years) from 455 B.C.E. lands on 29 C.E. — NOT 28 C.E. — because history goes straight from 1 B.C.E. to 1 C.E. with no Year 0 in between!',
@@ -117,7 +121,7 @@ const ERA_EXTRAS = {
     relicName: 'Crown of the Offspring',
     anchorNodeId: 'n684',
     pipIntro:
-      'The grand finale! After 4,000 years, Matthew 1’s legal title, Luke 3’s natural bloodline, and Daniel’s 29 C.E. timing all meet in Jesus of Nazareth!',
+      'The grand finale island! Both glowing bridges reunite right here beneath the shining star: Matthew 1’s legal title, Luke 3’s natural bloodline, and Daniel’s 29 C.E. timing all meet in Jesus!',
     funFactTitle: 'Whoa! Why Jesus Needed BOTH Family Trees!',
     funFactBody:
       'Through Joseph (Matthew 1 via Solomon), Jesus inherited the legal right to David’s throne. Through Mary (Luke 3 via Nathan), he was David’s direct biological descendant — fulfilling every single promise!',
@@ -155,6 +159,9 @@ export default function StoryJourney({
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [revealedFacts, setRevealedFacts] = useState({});
   const [celebrateNow, setCelebrateNow] = useState(false);
+  const [world3DEnabled, setWorld3DEnabled] = useState(true);
+  const [celebrationTrigger, setCelebrationTrigger] = useState({ eraIndex: 0, tick: 0 });
+  const [inspectingRelic, setInspectingRelic] = useState(null);
 
   const story = ALL_STORIES[activeIndex];
   const extra = ERA_EXTRAS[story.id];
@@ -185,7 +192,24 @@ export default function StoryJourney({
     setActiveIndex(idx);
     setStage(0);
     setCelebrateNow(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const fire3DFireworks = (eraIdx) => {
+    setCelebrationTrigger((prev) => ({ eraIndex: eraIdx, tick: prev.tick + 1 }));
+  };
+
+  const openRelic3D = (eraObj) => {
+    const ext = ERA_EXTRAS[eraObj.id];
+    setInspectingRelic({
+      eraId: eraObj.id,
+      chapter: eraObj.chapter,
+      eraTitle: eraObj.title,
+      years: eraObj.years,
+      relicName: ext.relicName,
+      funFactBody: ext.funFactBody,
+      familyReadRef: ext.familyReadRef,
+      familyReadUrl: ext.familyReadUrl,
+    });
   };
 
   const handleUnseal = (pid) => {
@@ -193,11 +217,17 @@ export default function StoryJourney({
     onUnsealProphecy(pid);
   };
 
+  const handleMiniGameSolved = (eraId) => {
+    fire3DFireworks(activeIndex);
+    onCompleteMiniGame(eraId);
+  };
+
   const handleAnswer = (optIdx) => {
     setSelectedAnswers((prev) => ({ ...prev, [story.id]: optIdx }));
     if (optIdx === story.checkIn.correctIndex) {
       playFanfareSound(soundEnabled);
       setCelebrateNow(true);
+      fire3DFireworks(activeIndex);
       onCompleteEra(story.id);
     } else {
       playWrongSound(soundEnabled);
@@ -215,13 +245,13 @@ export default function StoryJourney({
   } else if (stage === 2) {
     if (isCorrect || checkInSolved) {
       pipMood = 'celebrate';
-      pipMessage = `Amazing work!! You collected the ${extra.relicName}! Take a moment for the Family Worship discussion below before heading to the next stop!`;
+      pipMessage = `Amazing work!! Tap your golden ${extra.relicName} to spin it in 3D, and enjoy the Family Worship discussion below!`;
     } else if (isAnswered && !isCorrect) {
       pipMood = 'encourage';
-      pipMessage = 'Good try! Read the explanation below and tap the right answer to unlock your golden Relic!';
+      pipMessage = 'Good try! Read the explanation below and tap the right answer to unlock your golden 3D Relic!';
     } else {
       pipMood = 'idle';
-      pipMessage = `Final step for Stop ${story.chapter}! Answer this Bible check-in to unlock the ${extra.relicName} (+50 XP)!`;
+      pipMessage = `Final step for Stop ${story.chapter}! Answer this Bible check-in to unlock the 3D ${extra.relicName} (+50 XP)!`;
     }
   }
 
@@ -230,11 +260,11 @@ export default function StoryJourney({
       {/* Family Worship Night Pass-and-Play Mode */}
       {familyProps && <FamilyWorshipBar {...familyProps} />}
 
-      {/* Interactive Quest HUD + 7-Stop Visual Trail */}
+      {/* Interactive Quest HUD + 3D Seven-Island Diorama + Trail */}
       <section className="quest-hud-card" aria-label="Quest Learning Tour Progress">
         <div className="quest-hud-top">
           <div>
-            <p className="quest-hud-kicker">Interactive Family Worship Adventure · 7 Eras</p>
+            <p className="quest-hud-kicker">Interactive 3D Family Worship Adventure · 7 Eras</p>
             <h1 className="quest-hud-title">The Quest for the Promised Offspring</h1>
           </div>
 
@@ -251,10 +281,41 @@ export default function StoryJourney({
               <Star size={15} fill="currentColor" />
               <span>{totalStars} / 21 ★</span>
             </div>
+            {!world3DEnabled && (
+              <button
+                type="button"
+                className="hud-pill hud-pill-gold"
+                style={{ cursor: 'pointer' }}
+                onClick={() => setWorld3DEnabled(true)}
+              >
+                <Box size={14} />
+                <span>Enable 3D Map</span>
+              </button>
+            )}
           </div>
         </div>
 
-        {/* Interactive 7-Stop Visual Trail Map */}
+        {/* Live 3D 7-Island Quest Diorama */}
+        {world3DEnabled && (
+          <Suspense
+            fallback={
+              <div className="world3d-loading">
+                <Sparkles size={18} />
+                <span>Building 3D Bible Adventure World...</span>
+              </div>
+            }
+          >
+            <QuestWorld3D
+              activeIndex={activeIndex}
+              completedEras={completedEras}
+              celebrationTrigger={celebrationTrigger}
+              onSelectEra={switchEra}
+              onToggleLiteMode={() => setWorld3DEnabled(false)}
+            />
+          </Suspense>
+        )}
+
+        {/* Interactive 7-Stop Trail Ribbon */}
         <div className="quest-trail-scroll" role="tablist" aria-label="Seven Quest Eras">
           {ALL_STORIES.map((era, idx) => {
             const stars = getEraStars(era);
@@ -291,9 +352,11 @@ export default function StoryJourney({
           })}
         </div>
 
-        {/* Collectible Relic Showcase Strip */}
+        {/* Collectible 3D Relic Chest Showcase */}
         <div className="relic-shelf">
-          <span className="relic-shelf-label">Relic Chest ({completedEras.length}/7)</span>
+          <span className="relic-shelf-label">
+            3D Relic Chest ({completedEras.length}/7) · Tap unlocked to spin 360°!
+          </span>
           <div className="relic-shelf-icons">
             {ALL_STORIES.map((era, idx) => {
               const unlocked = completedEras.includes(era.id);
@@ -303,8 +366,12 @@ export default function StoryJourney({
                   key={era.id}
                   type="button"
                   className={`relic-mini-slot ${unlocked ? 'unlocked' : ''}`}
-                  title={unlocked ? `Collected: ${rName}` : `Locked: ${rName} (Complete Era ${era.chapter})`}
-                  onClick={() => switchEra(idx)}
+                  title={
+                    unlocked
+                      ? `Tap to spin 3D Relic: ${rName}`
+                      : `Locked: ${rName} (Complete Era ${era.chapter})`
+                  }
+                  onClick={() => (unlocked ? openRelic3D(era) : switchEra(idx))}
                 >
                   <EraMedallion eraId={era.id} size={34} unlocked={unlocked} />
                 </button>
@@ -400,7 +467,7 @@ export default function StoryJourney({
 
         {/* STAGE 1: DISCOVER, UNSEAL & MIND-BLOWING FACT */}
         {stage === 0 && (
-          <div className="quest-stage-body">
+          <div className="quest-stage-body stage-animate-in">
             <div className="story-subblock">
               <div className="story-narrative">
                 {story.narrative.map((para, i) => (
@@ -408,7 +475,7 @@ export default function StoryJourney({
                 ))}
               </div>
 
-              {/* Interactive Mind-Blowing Bible Fact Flip Card */}
+              {/* Interactive Mind-Blowing Bible Fact 3D Flip Card */}
               <button
                 type="button"
                 className={`fun-fact-card ${factOpen ? 'open' : ''}`}
@@ -422,10 +489,10 @@ export default function StoryJourney({
                     <Lightbulb size={17} />
                   </span>
                   <div style={{ textAlign: 'left', flex: 1 }}>
-                    <span className="fun-fact-kicker">Tap for a True Bible Mind-Blower!</span>
+                    <span className="fun-fact-kicker">Tap to Flip a True Bible Mind-Blower!</span>
                     <strong className="fun-fact-title">{extra.funFactTitle}</strong>
                   </div>
-                  <span className="badge badge-gold">{factOpen ? 'Hide' : 'Reveal'}</span>
+                  <span className="badge badge-gold">{factOpen ? 'Hide' : 'Flip'}</span>
                 </div>
                 {factOpen && <p className="fun-fact-body">{extra.funFactBody}</p>}
               </button>
@@ -436,7 +503,7 @@ export default function StoryJourney({
               <section className="story-subblock">
                 <h3 className="subblock-heading">
                   <Scroll size={18} color="var(--gold-deep)" />
-                  <span>Tap to Unseal Prophecy Clues (+25 XP Each)</span>
+                  <span>Tap to Break Crimson Wax Seals (+25 XP Each)</span>
                 </h3>
                 <div className="prophecy-grid">
                   {prophecies.map((p) => {
@@ -464,7 +531,7 @@ export default function StoryJourney({
                       );
                     }
                     return (
-                      <div key={p.id} className="prophecy-card prophecy-unsealed">
+                      <div key={p.id} className="prophecy-card prophecy-unsealed-3d">
                         <div className="prophecy-card-top">
                           <span className="prophecy-ref">✓ {p.reference}</span>
                           <span className="prophecy-date">{p.date}</span>
@@ -565,13 +632,13 @@ export default function StoryJourney({
 
         {/* STAGE 2: PLAYABLE ERA MINI-GAME */}
         {stage === 1 && (
-          <div className="quest-stage-body">
+          <div className="quest-stage-body stage-animate-in">
             <EraMiniGames
               key={story.id}
               eraId={story.id}
               alreadySolved={miniGameSolved}
               soundEnabled={soundEnabled}
-              onSolved={onCompleteMiniGame}
+              onSolved={handleMiniGameSolved}
             />
 
             <div className="stage-cta-row">
@@ -586,22 +653,22 @@ export default function StoryJourney({
                 onClick={() => setStage(2)}
               >
                 <Sparkles size={16} />
-                <span>Next: Unlock Relic &amp; Family Talk</span>
+                <span>Next: Unlock 3D Relic &amp; Discuss</span>
                 <ChevronRight size={16} />
               </button>
             </div>
           </div>
         )}
 
-        {/* STAGE 3: BOSS CHECK-IN, RELIC CELEBRATION & FAMILY WORSHIP PAUSE */}
+        {/* STAGE 3: BOSS CHECK-IN, 3D RELIC CELEBRATION & FAMILY WORSHIP PAUSE */}
         {stage === 2 && (
-          <div className="quest-stage-body">
+          <div className="quest-stage-body stage-animate-in">
             <section className="checkin-box" style={{ position: 'relative', overflow: 'hidden' }}>
               <ConfettiBurst active={celebrateNow} />
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.4rem' }}>
                 <Sparkles size={16} color="var(--gold-deep)" />
                 <span className="section-kicker" style={{ margin: 0 }}>
-                  Stop {story.chapter} Check-In · Unlock the {extra.relicName} (+50 XP)
+                  Stop {story.chapter} Check-In · Unlock 3D {extra.relicName} (+50 XP)
                 </span>
               </div>
               <h3 className="checkin-question">{story.checkIn.question}</h3>
@@ -643,7 +710,7 @@ export default function StoryJourney({
 
               {isAnswered && (
                 <div className={`checkin-feedback ${isCorrect ? 'correct' : 'wrong'}`}>
-                  <strong>{isCorrect ? 'Relic Unlocked! ' : 'Almost — here’s the Bible clue: '}</strong>
+                  <strong>{isCorrect ? '3D Relic Unlocked! ' : 'Almost — here’s the Bible clue: '}</strong>
                   {story.checkIn.explanation}
                 </div>
               )}
@@ -659,6 +726,14 @@ export default function StoryJourney({
                       You’ve earned {currentEraStars} of 3 stars in {story.title}!
                     </span>
                   </div>
+                  <button
+                    type="button"
+                    className="btn btn-gold"
+                    onClick={() => openRelic3D(story)}
+                  >
+                    <Box size={15} />
+                    <span>Spin 3D Relic</span>
+                  </button>
                 </div>
               )}
             </section>
@@ -709,6 +784,13 @@ export default function StoryJourney({
           </div>
         )}
       </section>
+
+      {/* Lazy-Loaded 360° 3D Relic Trophy Inspector Modal */}
+      {inspectingRelic && (
+        <Suspense fallback={null}>
+          <RelicViewer3D relic={inspectingRelic} onClose={() => setInspectingRelic(null)} />
+        </Suspense>
+      )}
     </div>
   );
 }
